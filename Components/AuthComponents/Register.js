@@ -29,9 +29,7 @@ const Register = () => {
     try {
       await signUp(email, password);
     } catch (error) {
-      if (error.code instanceof FirebaseError) {
-        console.error(error.code);
-      }
+      setError("hjdgfhigolakvjb");
     }
   };
   return (
