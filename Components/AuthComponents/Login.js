@@ -2,8 +2,13 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import loginimg from "../../Assets/AuthAssets/Login-bro.png";
+import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
+  const submitHandler = () => {
+    e.preventDefault();
+    const { signIn } = useAuth();
+  };
   return (
     <>
       <div className="h-[100vh]">
@@ -22,7 +27,7 @@ const Login = () => {
             </h2>
           </div>
 
-          <form className="mt-8  ">
+          <form onSubmit={submitHandler} className="mt-8  ">
             <input
               className="w-full border-darkgrey border-solid border-[1px] h-8 py-5 px-2 rounded-lg focus:outline-none"
               type="email"
