@@ -15,7 +15,7 @@ const HomePage = () => {
             BudgetApp
             <span className="w-[2rem] h-[2rem] rounded-full bg-violet"></span>
           </h2>
-          <Link href="/Auth/Login">
+          <Link href="/Auth/Register">
             <button className="mt-16 bg-violet animate-pulse text-white px-8 active:scale-75 py-4 w-100% text-[1.7rem] rounded-full ">
               Get Started
             </button>
