@@ -15,6 +15,14 @@ module.exports = {
       xxl: "1536px",
     },
     extend: {
+      gridTemplateRows: {
+        layout: "48% 48%",
+        mainlayoutsmall: "30% 70%",
+      },
+      gridTemplateColumns: {
+        layout: "15% 85%",
+        mainlayout: "40% 60%",
+      },
       colors: {
         violet: "#8464C9",
         yellowish: "#fac960",

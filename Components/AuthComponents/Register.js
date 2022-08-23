@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import loginimg from "../../Assets/AuthAssets/Login-bro.png";
 import { useAuth } from "../../context/AuthContext";
+import Router from "next/router";
 
 const Register = () => {
   const [error, setError] = useState(null);
@@ -10,6 +11,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
   const [isSignedUp, setIsSignedUp] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { signUp, signIn, currentUser } = useAuth();
 
@@ -29,17 +31,23 @@ const Register = () => {
       setTimeout(() => {
         setError(null);
       }, 2000);
-      return;
     }
     if (isSignedUp) {
+      setIsLoading(true);
       try {
         await signIn(email, password);
+        if (currentUser) {
+          console.log(currentUser);
+          Router.push("/Dashboard/DashboardPage");
+        }
       } catch (err) {
         setError("incorrect email or password");
+        setIsLoading(false);
         setInterval(() => {
           setError(null);
         }, 2000);
       }
+
       return;
     }
     await signUp(email, password);
@@ -76,19 +84,21 @@ const Register = () => {
           ) : (
             ""
           )}
+          {isLoading && <p>is loading....</p>}
           <form onSubmit={submitHandler} className="mt-8  ">
-            {!isSignedUp ? (
-              <input
-                className="w-full border-darkgrey border-solid border-[1px] h-8 py-5 px-2 rounded-lg focus:outline-none"
-                type="text"
-                name="username"
-                id="username"
-                placeholder="Enter a desired username"
-                onChange={(e) => setUserName(e.target.value)}
-              />
-            ) : (
-              ""
-            )}
+            <input
+              className={
+                !isSignedUp
+                  ? `w-full border-darkgrey border-solid border-[1px] h-8 py-5 px-2 rounded-lg focus:outline-none`
+                  : `hidden`
+              }
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter a desired username"
+              onChange={(e) => setUserName(e.target.value)}
+            />
+
             <input
               className="w-full border-darkgrey border-solid border-[1px] h-8 py-5 px-2 rounded-lg focus:outline-none mt-6"
               type="email"
