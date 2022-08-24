@@ -36,6 +36,7 @@ const Register = () => {
       setIsLoading(true);
       try {
         await signIn(email, password);
+        console.log(currentUser);
         if (currentUser) {
           console.log(currentUser);
           Router.push("/Dashboard/DashboardPage");
