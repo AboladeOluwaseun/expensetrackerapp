@@ -4,7 +4,7 @@ import avatar from "../../../Assets/AuthAssets/image-avatar.png";
 
 const DashboardHeader = () => {
   return (
-    <div className="pt-8  flex items-center justify-between">
+    <div className="pt-4 flex items-center justify-between">
       {/* <h2 className="hidden lmd:block text-[2rem] font-bold">Logo</h2> */}
       <div>
         <h1 className="text-[2.5rem] font-bold">
