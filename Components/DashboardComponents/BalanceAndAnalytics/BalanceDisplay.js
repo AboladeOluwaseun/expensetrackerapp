@@ -9,7 +9,7 @@ const BalanceDisplay = () => {
             <p>Total Balance</p>
             <h2 className="text-[2rem]">$2,000</h2>
           </div>
-          <div className="flex mt-6 text-[0.8rem] items-center justify-between">
+          <div className="flex mt-9 text-[0.8rem] items-center justify-between">
             <div>
               <p>Income</p>
               <h2>$1000</h2>

@@ -82,7 +82,7 @@ const BalanceAnalytics = () => {
             onClick={() => {
               displayChangeHandler("prev");
             }}
-            className="absolute left-4 top-[5rem] "
+            className="absolute left-4 top-[5.5rem] "
           >
             <ArrowBackIosIcon theme={theme} color="neutral" />
           </div>
@@ -94,7 +94,7 @@ const BalanceAnalytics = () => {
             onClick={() => {
               displayChangeHandler("next");
             }}
-            className=" absolute right-[1rem] top-[5rem]"
+            className=" absolute right-[1rem] top-[5.5rem]"
           >
             <ArrowForwardIosOutlinedIcon theme={theme} color="neutral" />
           </div>
