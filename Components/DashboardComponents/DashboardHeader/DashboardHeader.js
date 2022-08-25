@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import SearchIcon from "@mui/icons-material/Search";
 import avatar from "../../../Assets/AuthAssets/image-avatar.png";
 
 const DashboardHeader = () => {
@@ -13,13 +14,17 @@ const DashboardHeader = () => {
         <p className="text-[1.3rem]"> Welcome</p>
       </div>
 
-      <input
-        className="w-[20rem] hidden md:block lmd:block border-darkgrey border-solid border-[1px] h-8 py-6 px-4 rounded-[1.5rem] focus:outline-none"
-        type="search"
-        name="search"
-        id=""
-        placeholder="search expense or income"
-      />
+      <div className="hidden md:block relative">
+        <input
+          className="w-[20rem]  lmd:block border-darkgrey border-solid border-[1px] h-8 py-6 px-4 rounded-[1.5rem] focus:outline-none"
+          type="search"
+          name="search"
+          id=""
+          placeholder="search expense or income"
+        />
+        <SearchIcon className=" cursor-pointer absolute top-4 right-4" />
+      </div>
+
       <div className="h-[3rem] cursor-pointer rounded-full border-2 border-violet border-solid active:scale-105 w-[3rem]">
         <Image
           width={100}

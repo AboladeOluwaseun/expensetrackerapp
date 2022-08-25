@@ -4,6 +4,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./Components/**/*.{js,ts,jsx,tsx}",
   ],
+  plugins: [require("tailwind-scrollbar-hide")],
   theme: {
     screens: {
       xsm: "446px",
@@ -18,10 +19,13 @@ module.exports = {
       gridTemplateRows: {
         layout: "48% 48%",
         mainlayoutsmall: "30% 70%",
+        itemsandform: "10% 60% 27.5%",
+        itemsandformresponsive: "10%,85%,5%",
       },
       gridTemplateColumns: {
         layout: "15% 85%",
         mainlayout: "40% 60%",
+        item: "99% 1%",
       },
       colors: {
         violet: "#8464C9",

@@ -21,7 +21,7 @@ const theme = createTheme({
   },
 });
 
-const BalanceAnalytics = () => {
+const BalanceAndAnalytics = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [displayIndex, setDisplayIndex] = useState(0);
   const timeOutRef = useRef(null);
@@ -104,4 +104,4 @@ const BalanceAnalytics = () => {
   );
 };
 
-export default BalanceAnalytics;
+export default BalanceAndAnalytics;

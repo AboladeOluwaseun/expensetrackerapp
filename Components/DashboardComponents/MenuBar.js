@@ -11,7 +11,7 @@ const MenuBar = () => {
   });
 
   return (
-    <div className=" bg-incomegreen rounded-lg text-white p-4 mt-6 hidden lmd:block">
+    <div className=" bg-black rounded-lg text-white p-4 mt-6 hidden lmd:block">
       <ul>{menu}</ul>
     </div>
   );

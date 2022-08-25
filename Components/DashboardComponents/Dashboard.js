@@ -18,11 +18,13 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className=" max-w-[90%] h-[80vh]  box-border mx-auto">
-        <DashboardHeader></DashboardHeader>
-        <div className="lmd:grid lmd:grid-cols-layout lmd:gap-4 my-auto">
-          <MenuBar></MenuBar>
-          <DashboardDetails></DashboardDetails>
+      <div className="bg-[#ebebeb]">
+        <div className=" max-w-[90%] min-h-[90vh] lmd:min-h-[100vh] py-6  box-border mx-auto">
+          <DashboardHeader></DashboardHeader>
+          <div className="lmd:grid lmd:grid-cols-layout lmd:gap-4 my-auto">
+            <MenuBar></MenuBar>
+            <DashboardDetails></DashboardDetails>
+          </div>
         </div>
       </div>
     </>
