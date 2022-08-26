@@ -6,7 +6,7 @@ const ItemDisplayType = () => {
     return (
       <li
         key={index}
-        className=" w-[100%] py-2 text-center bg-slate-900 text-white active:text-black  active:bg-white rounded-full"
+        className=" w-[100%] py-2 text-center bg-slate-900 text-white active:text-black active:bg-white rounded-full"
       >
         {item}
       </li>
@@ -14,9 +14,11 @@ const ItemDisplayType = () => {
   });
   return (
     <>
-      <ul className="flex  border-solid border-black space-x-3 items-center justify-between ">
-        {itemTypeDisplay}
-      </ul>
+      <div>
+        <ul className="flex  border-solid border-black space-x-3 items-center justify-between ">
+          {itemTypeDisplay}
+        </ul>
+      </div>
     </>
   );
 };

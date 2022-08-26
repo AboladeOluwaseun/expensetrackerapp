@@ -34,7 +34,7 @@ const ToggleDisplayButton = ({ setToggle, toggle }) => {
             fontSize="large"
             theme={theme}
             color="neutral"
-            className="bg-violet rounded-full  relative mb-8"
+            className="bg-violet rounded-full p-1  relative mt-8 "
           />
         </IconButton>
       ) : (
@@ -47,7 +47,7 @@ const ToggleDisplayButton = ({ setToggle, toggle }) => {
             fontSize="large"
             theme={theme}
             color="neutral"
-            className="bg-violet  rounded-full mt-[-2rem]"
+            className="bg-violet mt-3 rounded-full"
           />
         </IconButton>
       )}

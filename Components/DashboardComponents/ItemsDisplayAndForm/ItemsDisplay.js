@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { List, Paper } from "@mui/material";
 import Item from "./Item";
 
 const ItemsDisplay = ({ toggle }) => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const data = [
     { Item: "Cash", price: 500, id: 1 },
     { Item: "Book", price: -500, id: 2 },
@@ -12,6 +14,22 @@ const ItemsDisplay = ({ toggle }) => {
     { Item: "Salary", price: 500, id: 7 },
     { Item: "Gift", price: 500, id: 8 },
     { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
+    { Item: "Travel", price: 500, id: 9 },
   ];
   const dataDisplay = data.map((dataItem, index) => {
     return (
@@ -21,14 +39,44 @@ const ItemsDisplay = ({ toggle }) => {
       </li>
     );
   });
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <>
-      {!toggle ? (
-        <ul className="max-w-[100%] overflow-x-hidden scrollbar-hide md:scrollbar-default lmd:max-h-[90%] overflow-auto">
-          {dataDisplay}
-        </ul>
+      {windowWidth > 924 ? (
+        <Paper
+          style={{
+            borderRadius: "8px",
+            marginTop: -8,
+            maxHeight: 350,
+            overflow: "auto",
+          }}
+        >
+          <List>{dataDisplay}</List>
+        </Paper>
+      ) : !toggle ? (
+        <Paper
+          style={{
+            borderRadius: "8px",
+            marginTop: 20,
+            maxHeight: 350,
+            overflow: "auto",
+            overflowX: "hidden",
+          }}
+        >
+          <List>{dataDisplay}</List>
+        </Paper>
       ) : (
-        <div className=" bg-gray-900 rounded-lg">entry form</div>
+        <div className="min-h-[40vh] mt-8 bg-gray-900 rounded-lg">
+          entry form
+        </div>
       )}
     </>
   );

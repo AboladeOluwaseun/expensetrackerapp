@@ -18,8 +18,8 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="bg-[#ebebeb]">
-        <div className=" max-w-[90%] min-h-[90vh] lmd:min-h-[100vh] py-6  box-border mx-auto">
+      <div className="bg-[#ebebeb] max-h-[100%]">
+        <div className=" max-w-[90%]  lmd:min-h-[100vh] pt-2 pb-8 lmd:py-6  box-border mx-auto">
           <DashboardHeader></DashboardHeader>
           <div className="lmd:grid lmd:grid-cols-layout lmd:gap-4 my-auto">
             <MenuBar></MenuBar>
