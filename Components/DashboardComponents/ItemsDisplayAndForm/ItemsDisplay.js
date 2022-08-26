@@ -24,7 +24,7 @@ const ItemsDisplay = ({ toggle }) => {
   return (
     <>
       {!toggle ? (
-        <ul className="max-w-[100%] scrollbar-hide md:scrollbar-default max-h-[90%] overflow-auto">
+        <ul className="max-w-[100%] overflow-x-hidden scrollbar-hide md:scrollbar-default lmd:max-h-[90%] overflow-auto">
           {dataDisplay}
         </ul>
       ) : (

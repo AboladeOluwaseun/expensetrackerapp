@@ -20,7 +20,7 @@ const ItemsDisplayAndForm = () => {
 
   return (
     <>
-      <div className="  grid grid-rows-itemsandformresponsive gap-2 lmd:grid-rows-itemsandform">
+      <div className="mt-10 lmd:mt-0 grid grid-rows-itemsandformresponsive gap-2 lmd:grid-rows-itemsandform">
         <ItemDisplayType />
 
         <ItemsDisplay toggle={toggle} />
