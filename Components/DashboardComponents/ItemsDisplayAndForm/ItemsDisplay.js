@@ -58,7 +58,12 @@ const ItemsDisplay = ({ toggle }) => {
             marginTop: -8,
             maxHeight: 350,
             overflow: "auto",
-            WebkitScrollSnapPointsY: "none",
+          }}
+          sx={{
+            overflowY: "auto",
+            "&::-webkit-scrollbar": {
+              width: 0,
+            },
           }}
         >
           <List>{dataDisplay}</List>
@@ -69,9 +74,12 @@ const ItemsDisplay = ({ toggle }) => {
             borderRadius: "8px",
             marginTop: 20,
             maxHeight: 350,
-            overflow: "auto",
-            overflowX: "hidden",
-            WebkitScrollSnapPointsY: "none",
+          }}
+          sx={{
+            overflowY: "auto",
+            "&::-webkit-scrollbar": {
+              width: 0,
+            },
           }}
         >
           <List>{dataDisplay}</List>
