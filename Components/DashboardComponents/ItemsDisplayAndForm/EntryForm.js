@@ -31,7 +31,7 @@ const theme = createTheme({
 const EntryForm = () => {
   return (
     <>
-      <div className="bg-white mt-8 lmd:mt-0 rounded-lg lmd:p-3 lmd:max-h-[91%]">
+      <div className="bg-white max-h-[90%] lmd:min-h-[91%] mt-8 lmd:mt-0 rounded-lg lmd:p-3 lmd:max-h-[91%]">
         <Typography variant="h5" sx={{ marginTop: 3, textAlign: "center" }}>
           Enter Income/Expense
         </Typography>
@@ -65,34 +65,36 @@ const EntryForm = () => {
                 Type:
               </FormLabel>
               <RadioGroup>
-                <FormControlLabel
-                  control={
-                    <Radio
-                      sx={{
-                        color: " rgb(17 24 39 / var(--tw-border-opacity))",
-                        "&.Mui-checked": {
-                          color: "rgb(17 24 39 / var(--tw-border-opacity))",
-                        },
-                      }}
-                    />
-                  }
-                  label="Income"
-                  value="Income"
-                />
-                <FormControlLabel
-                  control={
-                    <Radio
-                      sx={{
-                        color: " rgb(17 24 39 / var(--tw-border-opacity))",
-                        "&.Mui-checked": {
-                          color: "rgb(17 24 39 / var(--tw-border-opacity))",
-                        },
-                      }}
-                    />
-                  }
-                  label="Expense"
-                  value="Expese"
-                />
+                <div>
+                  <FormControlLabel
+                    control={
+                      <Radio
+                        sx={{
+                          color: " rgb(17 24 39 / var(--tw-border-opacity))",
+                          "&.Mui-checked": {
+                            color: "rgb(17 24 39 / var(--tw-border-opacity))",
+                          },
+                        }}
+                      />
+                    }
+                    label="Income"
+                    value="Income"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Radio
+                        sx={{
+                          color: " rgb(17 24 39 / var(--tw-border-opacity))",
+                          "&.Mui-checked": {
+                            color: "rgb(17 24 39 / var(--tw-border-opacity))",
+                          },
+                        }}
+                      />
+                    }
+                    label="Expense"
+                    value="Expese"
+                  />
+                </div>
               </RadioGroup>
             </FormControl>
 
@@ -101,7 +103,9 @@ const EntryForm = () => {
               justifyContent="center"
               alignItems="center"
               minHeight="100%"
-              marginTop="2rem"
+              marginTop="1rem"
+              marginBottom="2rem"
+              paddingBottom="2rem"
             >
               <Button
                 variant="contained"
@@ -110,12 +114,12 @@ const EntryForm = () => {
                   width: 200,
                   paddingY: "1rem",
 
-                  backgroundColor: "rgb(17 24 39 / var(--tw-bg-opacity))",
+                  backgroundColor: "#8464C9",
                   ":active": {
                     backgroundColor: "white",
                   },
                   ":hover": {
-                    backgroundColor: "rgb(17 24 39 / var(--tw-bg-opacity))",
+                    backgroundColor: "#8464C9",
                   },
                 }}
               >

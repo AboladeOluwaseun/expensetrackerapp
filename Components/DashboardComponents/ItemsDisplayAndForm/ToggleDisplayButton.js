@@ -24,33 +24,35 @@ const theme = createTheme({
 const ToggleDisplayButton = ({ setToggle, toggle }) => {
   return (
     <>
-      {toggle ? (
-        <IconButton
-          onClick={() => {
-            setToggle(!toggle);
-          }}
-        >
-          <ReceiptIcon
-            fontSize="large"
-            theme={theme}
-            color="neutral"
-            className="bg-violet rounded-full p-1  relative mt-8 "
-          />
-        </IconButton>
-      ) : (
-        <IconButton
-          onClick={() => {
-            setToggle(!toggle);
-          }}
-        >
-          <AddIcon
-            fontSize="large"
-            theme={theme}
-            color="neutral"
-            className="bg-violet mt-3 rounded-full"
-          />
-        </IconButton>
-      )}
+      <div className=" max-w-[80%] bg-white rounded-lg text-center mx-auto">
+        {toggle ? (
+          <IconButton
+            onClick={() => {
+              setToggle(!toggle);
+            }}
+          >
+            <ReceiptIcon
+              fontSize="large"
+              theme={theme}
+              color="neutral"
+              className="bg-violet rounded-full p-1  relative mt-8 "
+            />
+          </IconButton>
+        ) : (
+          <IconButton
+            onClick={() => {
+              setToggle(!toggle);
+            }}
+          >
+            <AddIcon
+              fontSize="large"
+              theme={theme}
+              color="neutral"
+              className="bg-violet mt-3 rounded-full"
+            />
+          </IconButton>
+        )}
+      </div>
     </>
   );
 };
