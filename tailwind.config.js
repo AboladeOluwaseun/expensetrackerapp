@@ -19,7 +19,7 @@ module.exports = {
       gridTemplateRows: {
         layout: "48% 48%",
         mainlayoutsmall: "30% 70%",
-        itemsandform: "10% 55% 30%",
+        itemsandform: "10% 50% 36%",
         itemsandformresponsive: "10%,85%,5%",
       },
       gridTemplateColumns: {

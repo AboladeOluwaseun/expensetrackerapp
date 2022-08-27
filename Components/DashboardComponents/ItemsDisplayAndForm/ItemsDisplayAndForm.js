@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ItemDisplayType from "./ItemDisplayType";
 import ItemsDisplay from "./ItemsDisplay";
 import ToggleDisplayButton from "./ToggleDisplayButton";
-
+import EntryForm from "./EntryForm";
 const ItemsDisplayAndForm = () => {
   const [toggle, setToggle] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -25,7 +25,7 @@ const ItemsDisplayAndForm = () => {
 
         <ItemsDisplay toggle={toggle} />
         {windowWidth > 924 ? (
-          <div className=" bg-gray-900 rounded-lg">entry form</div>
+          <EntryForm />
         ) : (
           <ToggleDisplayButton setToggle={setToggle} toggle={toggle} />
         )}

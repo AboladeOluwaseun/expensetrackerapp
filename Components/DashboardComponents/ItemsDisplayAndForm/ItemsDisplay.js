@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { List, Paper } from "@mui/material";
 import Item from "./Item";
+import EntryForm from "./EntryForm";
 
 const ItemsDisplay = ({ toggle }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -57,6 +58,7 @@ const ItemsDisplay = ({ toggle }) => {
             marginTop: -8,
             maxHeight: 350,
             overflow: "auto",
+            WebkitScrollSnapPointsY: "none",
           }}
         >
           <List>{dataDisplay}</List>
@@ -69,14 +71,13 @@ const ItemsDisplay = ({ toggle }) => {
             maxHeight: 350,
             overflow: "auto",
             overflowX: "hidden",
+            WebkitScrollSnapPointsY: "none",
           }}
         >
           <List>{dataDisplay}</List>
         </Paper>
       ) : (
-        <div className="min-h-[40vh] mt-8 bg-gray-900 rounded-lg">
-          entry form
-        </div>
+        <EntryForm></EntryForm>
       )}
     </>
   );
