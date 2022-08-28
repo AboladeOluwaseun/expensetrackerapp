@@ -1,9 +1,10 @@
 import React from "react";
 import AddIcon from "@mui/icons-material/Add";
-import HistoryIcon from "@mui/icons-material/History";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import { IconButton } from "@mui/material";
 import { createTheme } from "@mui/material";
+import HistoryIcon from "@mui/icons-material/History";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 const theme = createTheme({
   status: {
@@ -24,7 +25,20 @@ const theme = createTheme({
 const ToggleDisplayButton = ({ setToggle, toggle }) => {
   return (
     <>
-      <div className=" max-w-[1000%] sticky bottom-0 rounded-bl-none rounded-br-none bg-gray-900 rounded-lg text-center mx-auto">
+      <div className=" max-w-[1000%] flex items-center justify-center space-x-5 sticky bottom-0 rounded-bl-none rounded-br-none bg-gray-900 rounded-lg text-center mx-auto">
+        <IconButton
+          onClick={() => {
+            setToggle(!toggle);
+          }}
+        >
+          <SettingsIcon
+            fontSize="large"
+            theme={theme}
+            color="neutral"
+            className=" p-1 rounded-full"
+          />
+        </IconButton>
+
         {toggle ? (
           <IconButton
             onClick={() => {
@@ -32,10 +46,11 @@ const ToggleDisplayButton = ({ setToggle, toggle }) => {
             }}
           >
             <ReceiptIcon
+              sx={{ width: 5, height: 5 }}
               fontSize="large"
               theme={theme}
               color="neutral"
-              className="bg-violet rounded-full p-1 "
+              className="rounded-full p-1 "
             />
           </IconButton>
         ) : (
@@ -48,10 +63,23 @@ const ToggleDisplayButton = ({ setToggle, toggle }) => {
               fontSize="large"
               theme={theme}
               color="neutral"
-              className="bg-violet p-1 rounded-full"
+              className=" p-1 rounded-full"
             />
           </IconButton>
         )}
+
+        <IconButton
+          onClick={() => {
+            setToggle(!toggle);
+          }}
+        >
+          <HistoryIcon
+            fontSize="large"
+            theme={theme}
+            color="neutral"
+            className=" p-1 rounded-full"
+          />
+        </IconButton>
       </div>
     </>
   );
