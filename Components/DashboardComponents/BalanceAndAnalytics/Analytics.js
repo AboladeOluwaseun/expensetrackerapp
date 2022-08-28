@@ -1,25 +1,42 @@
 import React from "react";
+import { Pie, Doughnut } from "react-chartjs-2";
+import { Chart, ArcElement } from "chart.js";
+Chart.register(ArcElement);
+
+const state = {
+  labels: ["January", "February"],
+  datasets: [
+    {
+      label: "Rainfall",
+      backgroundColor: ["#fac960", "#E1DBE6"],
+      hoverBackgroundColor: ["#fac960", "#E1DBE6"],
+      data: [65, 59],
+    },
+  ],
+};
 
 const Analytics = () => {
   return (
     <>
-      <div className="  bg-yellowish text-white rounded-lg">
-        <div className="max-w-[95%]  py-3 mx-auto">
-          <div>
-            <p>Total Balance</p>
-            <h2 className="text-[2rem]">$2,000</h2>
-          </div>
-          <div className="flex mt-6 items-center justify-between">
-            <div>
-              <p>Income</p>
-              <h2>$1000</h2>
-            </div>
-            <div>
-              <p>Expense</p>
-              <h2>$1000</h2>
-            </div>
-          </div>
-        </div>
+      <div className="max-w-[95%] bg-violet text-white  rounded-lg  py-3 mx-auto">
+        <Doughnut
+          data={state}
+          width={1500}
+          height={1500}
+          autoPadding={true}
+          options={{ maintainAspectRatio: false }}
+          options={{
+            title: {
+              display: false,
+              text: "Average Rainfall per month",
+              fontSize: 20,
+            },
+            legend: {
+              display: true,
+              position: "right",
+            },
+          }}
+        />
       </div>
     </>
   );

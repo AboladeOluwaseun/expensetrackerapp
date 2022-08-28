@@ -32,6 +32,7 @@ const ToggleDisplayButton = ({ setToggle, toggle }) => {
           }}
         >
           <SettingsIcon
+            sx={{ width: 30, height: 30 }}
             fontSize="large"
             theme={theme}
             color="neutral"
@@ -75,6 +76,7 @@ const ToggleDisplayButton = ({ setToggle, toggle }) => {
           }}
         >
           <HistoryIcon
+            sx={{ width: 30, height: 30 }}
             fontSize="large"
             theme={theme}
             color="neutral"
