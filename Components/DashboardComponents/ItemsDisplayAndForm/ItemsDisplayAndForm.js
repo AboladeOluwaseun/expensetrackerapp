@@ -26,7 +26,6 @@ const ItemsDisplayAndForm = () => {
         <ItemsDisplay toggle={toggle} />
         {windowWidth > 924 && <EntryForm />}
       </div>
-
       {windowWidth < 924 && (
         <ToggleDisplayButton setToggle={setToggle} toggle={toggle} />
       )}

@@ -24,7 +24,7 @@ const theme = createTheme({
 const ToggleDisplayButton = ({ setToggle, toggle }) => {
   return (
     <>
-      <div className=" max-w-[80%] bg-white rounded-lg text-center mx-auto">
+      <div className=" max-w-[80%] sticky bottom-0 bg-white rounded-lg text-center mx-auto">
         {toggle ? (
           <IconButton
             onClick={() => {
