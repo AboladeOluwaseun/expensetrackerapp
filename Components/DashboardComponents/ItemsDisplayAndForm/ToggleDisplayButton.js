@@ -46,7 +46,7 @@ const ToggleDisplayButton = ({ setToggle, toggle }) => {
             }}
           >
             <ReceiptIcon
-              sx={{ width: 5, height: 5 }}
+              sx={{ width: 45, height: 45 }}
               fontSize="large"
               theme={theme}
               color="neutral"
@@ -60,6 +60,7 @@ const ToggleDisplayButton = ({ setToggle, toggle }) => {
             }}
           >
             <AddIcon
+              sx={{ width: 45, height: 45 }}
               fontSize="large"
               theme={theme}
               color="neutral"
