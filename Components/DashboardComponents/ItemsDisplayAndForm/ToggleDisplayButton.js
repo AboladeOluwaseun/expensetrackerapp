@@ -24,7 +24,7 @@ const theme = createTheme({
 const ToggleDisplayButton = ({ setToggle, toggle }) => {
   return (
     <>
-      <div className=" max-w-[80%] sticky bottom-0 bg-white rounded-lg text-center mx-auto">
+      <div className=" max-w-[1000%] sticky bottom-0 rounded-bl-none rounded-br-none bg-gray-900 rounded-lg text-center mx-auto">
         {toggle ? (
           <IconButton
             onClick={() => {
@@ -35,7 +35,7 @@ const ToggleDisplayButton = ({ setToggle, toggle }) => {
               fontSize="large"
               theme={theme}
               color="neutral"
-              className="bg-violet rounded-full p-1  relative mt-8 "
+              className="bg-violet rounded-full p-1 "
             />
           </IconButton>
         ) : (
@@ -48,7 +48,7 @@ const ToggleDisplayButton = ({ setToggle, toggle }) => {
               fontSize="large"
               theme={theme}
               color="neutral"
-              className="bg-violet mt-3 rounded-full"
+              className="bg-violet p-1 rounded-full"
             />
           </IconButton>
         )}

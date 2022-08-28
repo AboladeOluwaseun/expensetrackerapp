@@ -31,7 +31,7 @@ const theme = createTheme({
 const EntryForm = () => {
   return (
     <>
-      <div className="bg-white max-h-[90%] lmd:min-h-[91%] mt-8 lmd:mt-0 rounded-lg lmd:p-3 lmd:max-h-[91%]">
+      <div className="bg-white max-h-[100%] lmd:min-h-[91%] mt-5 lmd:mt-0 rounded-lg lmd:p-3 lmd:max-h-[91%]">
         <Typography variant="h5" sx={{ marginTop: 3, textAlign: "center" }}>
           Enter Income/Expense
         </Typography>
