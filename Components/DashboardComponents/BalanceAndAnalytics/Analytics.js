@@ -1,16 +1,16 @@
 import React from "react";
 import { Pie, Doughnut } from "react-chartjs-2";
-import { Chart, ArcElement } from "chart.js";
-Chart.register(ArcElement);
+import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
+Chart.register(ArcElement, Tooltip, Legend);
 
 const state = {
-  labels: ["January", "February"],
+  labels: ["Income", "Expense"],
   datasets: [
     {
       label: "Rainfall",
-      backgroundColor: ["#fac960", "#E1DBE6"],
-      hoverBackgroundColor: ["#fac960", "#E1DBE6"],
-      data: [65, 59],
+      backgroundColor: ["#2ecc71", "#c0392b"],
+      hoverBackgroundColor: ["#2ecc71", "#E1DBE6"],
+      data: [80, 59],
     },
   ],
 };
@@ -18,23 +18,27 @@ const state = {
 const Analytics = () => {
   return (
     <>
-      <div className="max-w-[95%] bg-violet text-white  rounded-lg  py-3 mx-auto">
+      <div className="max-w-[95%] xxsm:min-w-[100%] lmd:max-w-[100%] h-[100%] px-5 py-3  bg-violet text-white  rounded-lg   lmd:py-2 lmd:px-1 mx-auto">
         <Doughnut
           data={state}
-          width={1500}
-          height={1500}
-          autoPadding={true}
-          options={{ maintainAspectRatio: false }}
           options={{
             title: {
               display: false,
               text: "Average Rainfall per month",
               fontSize: 20,
             },
-            legend: {
-              display: true,
-              position: "right",
+            plugins: {
+              legend: {
+                labels: {
+                  color: "white",
+                },
+
+                display: true,
+                position: "top",
+              },
             },
+            maintainAspectRatio: false,
+            responsive: true,
           }}
         />
       </div>

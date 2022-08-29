@@ -73,7 +73,7 @@ const ItemsDisplay = ({ toggle }) => {
           style={{
             borderRadius: "8px",
             marginTop: 20,
-            maxHeight: 330,
+            maxHeight: 430,
           }}
           sx={{
             overflowY: "auto",

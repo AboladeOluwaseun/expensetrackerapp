@@ -7,6 +7,7 @@ module.exports = {
   plugins: [require("tailwind-scrollbar-hide")],
   theme: {
     screens: {
+      xxsm: "360px",
       xsm: "446px",
       sm: "640px",
       md: "768px",
