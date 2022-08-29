@@ -5,27 +5,7 @@ import EntryForm from "./EntryForm";
 
 const ItemsDisplay = ({ toggle }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const data = [
-    { Item: "Cash", price: 500, id: 1 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-  ];
+  const data = [{ Item: "Cash", price: 500, id: 1 }];
   const dataDisplay = data.map((dataItem, index) => {
     return (
       <li key={index}>
