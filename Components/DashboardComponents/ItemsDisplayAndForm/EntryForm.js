@@ -89,7 +89,7 @@ const EntryForm = () => {
                   setCategory(e.target.value);
                 }}
               >
-                <div>
+                <div className="flex">
                   <FormControlLabel
                     control={
                       <Radio

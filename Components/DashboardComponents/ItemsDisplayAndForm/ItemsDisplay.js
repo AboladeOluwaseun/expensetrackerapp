@@ -8,7 +8,6 @@ const ItemsDisplay = ({ toggle }) => {
   const data = [
     { Item: "Cash", price: 500, id: 1 },
     { Item: "Book", price: -500, id: 2 },
-    { Item: "Insurance", price: 500, id: 3 },
   ];
   const dataDisplay = data.map((dataItem, index) => {
     return (
