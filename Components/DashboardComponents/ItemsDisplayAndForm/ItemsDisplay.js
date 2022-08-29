@@ -8,6 +8,23 @@ const ItemsDisplay = ({ toggle }) => {
   const data = [
     { Item: "Cash", price: 500, id: 1 },
     { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
   ];
   const dataDisplay = data.map((dataItem, index) => {
     return (
@@ -49,7 +66,7 @@ const ItemsDisplay = ({ toggle }) => {
         <Paper
           style={{
             borderRadius: "8px",
-            marginTop: 20,
+            marginTop: 30,
             maxHeight: 430,
           }}
           sx={{
