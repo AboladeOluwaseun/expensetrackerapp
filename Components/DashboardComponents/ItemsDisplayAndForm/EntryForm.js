@@ -28,7 +28,7 @@ const theme = createTheme({
     },
   },
 });
-const EntryForm = () => {
+const EntryForm = ({ windowWidth }) => {
   const [description, setDescription] = useState("");
   const [Amount, setAmount] = useState("");
   const [category, setCategory] = useState("Income");
@@ -43,7 +43,7 @@ const EntryForm = () => {
   };
   return (
     <>
-      <div className="bg-white max-h-[100%] lmd:min-h-[91%] mt-5 lmd:mt-0 rounded-lg lmd:p-3 lmd:max-h-[91%]">
+      <div className="bg-white max-h-[100%] lmd:min-h-[91%]  mt-5 lmd:mt-0 rounded-lg lmd:p-3 ">
         <Typography variant="h5" sx={{ marginTop: 3, textAlign: "center" }}>
           Enter Income/Expense
         </Typography>
@@ -89,7 +89,7 @@ const EntryForm = () => {
                   setCategory(e.target.value);
                 }}
               >
-                <div className="flex">
+                <div className="flex lmd:mb-8">
                   <FormControlLabel
                     control={
                       <Radio
@@ -122,35 +122,65 @@ const EntryForm = () => {
               </RadioGroup>
             </FormControl>
 
-            <Box
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              minHeight="100%"
-              marginTop="1rem"
-              marginBottom="2rem"
-              paddingBottom="2rem"
-            >
-              <Button
-                type="submit"
-                variant="contained"
-                sx={{
-                  textAlign: "center",
-                  width: 200,
-                  paddingY: "1rem",
-
-                  backgroundColor: "#8464C9",
-                  ":active": {
-                    backgroundColor: "white",
-                  },
-                  ":hover": {
-                    backgroundColor: "#8464C9",
-                  },
-                }}
+            {windowWidth > 924 ? (
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                minHeight="100%"
+                marginTop="1rem"
               >
-                Add Income
-              </Button>
-            </Box>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{
+                    textAlign: "center",
+                    width: 200,
+                    paddingY: "1rem",
+
+                    backgroundColor: "#8464C9",
+                    ":active": {
+                      backgroundColor: "white",
+                    },
+                    ":hover": {
+                      backgroundColor: "#8464C9",
+                    },
+                  }}
+                >
+                  Add Income
+                </Button>
+              </Box>
+            ) : (
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                minHeight="100%"
+                marginTop="1rem"
+                marginBottom="2rem"
+                paddingBottom="2rem"
+              >
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{
+                    textAlign: "center",
+                    width: 200,
+                    paddingY: "1rem",
+
+                    backgroundColor: "#8464C9",
+                    ":active": {
+                      backgroundColor: "white",
+                    },
+                    ":hover": {
+                      backgroundColor: "#8464C9",
+                    },
+                  }}
+                >
+                  Add Income
+                </Button>
+              </Box>
+            )}
           </div>
         </form>
       </div>

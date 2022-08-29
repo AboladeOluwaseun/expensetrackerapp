@@ -5,7 +5,39 @@ import EntryForm from "./EntryForm";
 
 const ItemsDisplay = ({ toggle }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const data = [{ Item: "Cash", price: 500, id: 1 }];
+  const data = [
+    { Item: "Cash", price: 500, id: 1 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+    { Item: "Book", price: -500, id: 2 },
+
+    ,
+    ,
+  ];
   const dataDisplay = data.map((dataItem, index) => {
     return (
       <li key={index}>
@@ -30,7 +62,7 @@ const ItemsDisplay = ({ toggle }) => {
           style={{
             borderRadius: "8px",
             marginTop: -8,
-            maxHeight: 350,
+            maxHeight: 250,
             overflow: "auto",
           }}
           sx={{
@@ -59,7 +91,7 @@ const ItemsDisplay = ({ toggle }) => {
           <List>{dataDisplay}</List>
         </Paper>
       ) : (
-        <EntryForm></EntryForm>
+        <EntryForm windowWidth={windowWidth}></EntryForm>
       )}
     </>
   );
