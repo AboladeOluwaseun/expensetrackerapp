@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
@@ -29,26 +29,45 @@ const theme = createTheme({
   },
 });
 const EntryForm = () => {
+  const [description, setDescription] = useState("");
+  const [Amount, setAmount] = useState("");
+  const [category, setCategory] = useState("Income");
+
+  const formHandler = (e) => {
+    e.preventDefault();
+    if (description && Amount) {
+      console.log(description, Amount);
+      setDescription("");
+      setAmount("");
+    } else console.log("enter a valid description or amount");
+  };
   return (
     <>
       <div className="bg-white max-h-[100%] lmd:min-h-[91%] mt-5 lmd:mt-0 rounded-lg lmd:p-3 lmd:max-h-[91%]">
         <Typography variant="h5" sx={{ marginTop: 3, textAlign: "center" }}>
           Enter Income/Expense
         </Typography>
-        <form className="" noValidate autoComplete="off">
+        <form onSubmit={formHandler} autoComplete="none">
           <div className="max-w-[80%] lmd:flex items-baseline lmd:space-x-3 justify-between lmd:mt-3 mx-auto mt-8">
             <input
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
               type="text"
               name="description"
               id="description"
-              placeholder="enter description..."
+              placeholder="Enter description..."
               className="border-[1px]  block border-solid border-gray-900 outline-violet w-full rounded-lg p-2"
             />
+
             <input
+              onChange={(e) => {
+                setAmount(e.target.value);
+              }}
               type="number"
               name="description"
               id="description"
-              placeholder="enterAmount..."
+              placeholder="Enter Amount..."
               className="border-[1px] mt-5 block border-solid border-gray-900 outline-violet w-full rounded-lg p-2"
             />
           </div>
@@ -64,7 +83,12 @@ const EntryForm = () => {
               >
                 Type:
               </FormLabel>
-              <RadioGroup>
+              <RadioGroup
+                value={category}
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                }}
+              >
                 <div>
                   <FormControlLabel
                     control={
@@ -108,6 +132,7 @@ const EntryForm = () => {
               paddingBottom="2rem"
             >
               <Button
+                type="submit"
                 variant="contained"
                 sx={{
                   textAlign: "center",

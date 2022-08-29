@@ -8,8 +8,8 @@ const state = {
   datasets: [
     {
       label: "Rainfall",
-      backgroundColor: ["#2ecc71", "#c0392b"],
-      hoverBackgroundColor: ["#2ecc71", "#E1DBE6"],
+      backgroundColor: ["#fac960", "#fff"],
+      hoverBackgroundColor: ["#fac960", "#fff"],
       data: [80, 59],
     },
   ],
