@@ -2,42 +2,13 @@ import React, { useState, useEffect } from "react";
 import { List, Paper } from "@mui/material";
 import Item from "./Item";
 import EntryForm from "./EntryForm";
+import { useSelector } from "react-redux";
 
 const ItemsDisplay = ({ toggle }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const data = [
-    { Item: "Cash", price: 500, id: 1 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-    { Item: "Book", price: -500, id: 2 },
-
-    ,
-    ,
-  ];
+  const { transactions } = useSelector((state) => state);
+  console.log(transactions);
+  const data = [];
   const dataDisplay = data.map((dataItem, index) => {
     return (
       <li key={index}>
@@ -62,7 +33,7 @@ const ItemsDisplay = ({ toggle }) => {
           style={{
             borderRadius: "8px",
             marginTop: -8,
-            maxHeight: 250,
+            maxHeight: 230,
             overflow: "auto",
           }}
           sx={{

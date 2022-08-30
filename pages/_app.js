@@ -1,10 +1,14 @@
 import { AuthProvider } from "../context/AuthContext";
 import "../styles/globals.css";
+import { store } from "../ReduxStore/Store";
+import { Provider } from "react-redux";
 
 function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
     </AuthProvider>
   );
 }

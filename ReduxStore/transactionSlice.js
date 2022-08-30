@@ -1,21 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  transactions: [],
+  transactions: 1,
 };
 
 export const transactionsSlice = createSlice({
   name: "transactions",
   initialState,
   reducers: {
-    addTransaction: (state, actions) => {
-      state.value = state.transactions.push(actions.payload);
+    addTransaction: (state, action) => {
+      state.transactions = state.transactions.push(action.payload);
     },
     decrement: (state) => {
-      state.value -= 1;
+      state.transactions -= 1;
     },
     incrementByAmount: (state, action) => {
-      state.value += action.payload;
+      state.transactions += action.payload;
     },
   },
 });

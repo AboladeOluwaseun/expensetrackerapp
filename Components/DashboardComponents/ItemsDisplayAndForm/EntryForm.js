@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Typography } from "@mui/material";
-import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { RadioGroup, Radio } from "@mui/material";
 import { FormControlLabel, FormControl, FormLabel } from "@mui/material";
-import { Container, Box } from "@mui/material";
-import { ThemeProvider, createTheme } from "@mui/system";
+import { Box } from "@mui/material";
+import { createTheme } from "@mui/system";
+import { useDispatch } from "react-redux";
+import { addTransaction } from "../../../ReduxStore/transactionSlice";
 
 const theme = createTheme({
   palette: {
@@ -16,27 +17,18 @@ const theme = createTheme({
       main: "white",
     },
   },
-  breakpoints: {
-    values: {
-      xsm: 446,
-      sm: 640,
-      md: 768,
-      lmd: 924,
-      lg: 1024,
-      xl: 1280,
-      xxl: 1536,
-    },
-  },
 });
-const EntryForm = ({ windowWidth }) => {
+const EntryForm = ({ windowWidth, setToggle, toggle }) => {
   const [description, setDescription] = useState("");
-  const [Amount, setAmount] = useState("");
+  const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("Income");
+  const dispatch = useDispatch();
 
   const formHandler = (e) => {
     e.preventDefault();
-    if (description && Amount) {
-      console.log(description, Amount);
+    if (description && amount) {
+      dispatch(addTransaction({ description, amount, category }));
+
       setDescription("");
       setAmount("");
     } else console.log("enter a valid description or amount");
@@ -47,7 +39,7 @@ const EntryForm = ({ windowWidth }) => {
         <Typography variant="h5" sx={{ marginTop: 3, textAlign: "center" }}>
           Enter Income/Expense
         </Typography>
-        <form onSubmit={formHandler} autoComplete="none">
+        <form onSubmit={formHandler} autoComplete="off">
           <div className="max-w-[80%] lmd:flex items-baseline lmd:space-x-3 justify-between lmd:mt-3 mx-auto mt-8">
             <input
               onChange={(e) => {
@@ -71,7 +63,7 @@ const EntryForm = ({ windowWidth }) => {
               className="border-[1px] mt-5 block border-solid border-gray-900 outline-violet w-full rounded-lg p-2"
             />
           </div>
-          <div className="mt-8 max-w-[80%] mx-auto lmd:flex items-center justify-between">
+          <div className="mt-8  max-w-[80%] mx-auto lmd:flex items-center justify-between">
             <FormControl>
               <FormLabel
                 sx={{
@@ -89,7 +81,7 @@ const EntryForm = ({ windowWidth }) => {
                   setCategory(e.target.value);
                 }}
               >
-                <div className="flex lmd:mb-8">
+                <div className="flex lmd:pb-8">
                   <FormControlLabel
                     control={
                       <Radio
@@ -128,7 +120,7 @@ const EntryForm = ({ windowWidth }) => {
                 justifyContent="center"
                 alignItems="center"
                 minHeight="100%"
-                marginTop="1rem"
+                marginTop="-1rem"
               >
                 <Button
                   type="submit"

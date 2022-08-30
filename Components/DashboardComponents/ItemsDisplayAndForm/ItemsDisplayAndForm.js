@@ -20,11 +20,13 @@ const ItemsDisplayAndForm = () => {
 
   return (
     <>
-      <div className="mt-10 relative lmd:mt-0 lmd:gap-0 grid grid-rows-itemsandformresponsive lmd:grid-rows-itemsandform">
+      <div className="mt-10 relative lmd:mt-0 lmd:gap-2 grid grid-rows-itemsandformresponsive lmd:grid-rows-itemsandform">
         <ItemDisplayType />
 
         <ItemsDisplay toggle={toggle} />
-        {windowWidth > 924 && <EntryForm />}
+        {windowWidth > 924 && (
+          <EntryForm setToggle={setToggle} toggle={toggle} />
+        )}
       </div>
       {windowWidth < 924 && (
         <ToggleDisplayButton setToggle={setToggle} toggle={toggle} />
