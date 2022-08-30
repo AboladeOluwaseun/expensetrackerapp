@@ -6,8 +6,7 @@ import { useSelector } from "react-redux";
 
 const ItemsDisplay = ({ toggle }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const { transactions } = useSelector((state) => state);
-  console.log(transactions);
+
   const data = [];
   const dataDisplay = data.map((dataItem, index) => {
     return (
