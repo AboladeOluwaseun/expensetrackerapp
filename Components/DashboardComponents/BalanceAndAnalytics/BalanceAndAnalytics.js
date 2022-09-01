@@ -25,7 +25,10 @@ const BalanceAndAnalytics = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [displayIndex, setDisplayIndex] = useState(0);
   const timeOutRef = useRef(null);
-  const BalanceAndAnalyticsDisplay = [<BalanceDisplay />, <Analytics />];
+  const BalanceAndAnalyticsDisplay = [
+    <BalanceDisplay key={"1"} />,
+    <Analytics key={"2"} />,
+  ];
   const resetTimeOut = () => {
     if (timeOutRef.current) {
       clearTimeout(timeOutRef.current);
@@ -55,18 +58,18 @@ const BalanceAndAnalytics = () => {
     };
   }, []);
 
-  useEffect(() => {
-    resetTimeOut();
-    timeOutRef.current = setTimeout(
-      () =>
-        setDisplayIndex((prev) =>
-          prev === BalanceAndAnalyticsDisplay.length - 1 ? 0 : prev + 1
-        ),
-      1000
-    );
+  // useEffect(() => {
+  //   resetTimeOut();
+  //   timeOutRef.current = setTimeout(
+  //     () =>
+  //       setDisplayIndex((prev) =>
+  //         prev === BalanceAndAnalyticsDisplay.length - 1 ? 0 : prev + 1
+  //       ),
+  //     1000
+  //   );
 
-    return resetTimeOut();
-  }, [displayIndex, setDisplayIndex]);
+  //   return resetTimeOut();
+  // }, [displayIndex, setDisplayIndex]);
 
   return (
     <>
