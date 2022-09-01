@@ -6,7 +6,12 @@ import { FormControlLabel, FormControl, FormLabel } from "@mui/material";
 import { Box } from "@mui/material";
 import { createTheme } from "@mui/system";
 import { useDispatch } from "react-redux";
-import { addTransaction } from "../../../ReduxStore/transactionSlice";
+import {
+  addTransaction,
+  getTotalBalance,
+  getIncomeTotal,
+  getExpenseTotal,
+} from "../../../ReduxStore/transactionSlice";
 
 const theme = createTheme({
   palette: {
@@ -27,7 +32,12 @@ const EntryForm = ({ windowWidth, setToggle, toggle }) => {
   const formHandler = (e) => {
     e.preventDefault();
     if (description && amount) {
-      dispatch(addTransaction({ description, amount, category }));
+      const payload = { description, amount, category };
+      dispatch(addTransaction(payload));
+      setToggle(!toggle);
+      dispatch(getIncomeTotal(payload));
+      dispatch(getExpenseTotal(payload));
+      dispatch(getTotalBalance());
 
       setDescription("");
       setAmount("");
@@ -108,7 +118,7 @@ const EntryForm = ({ windowWidth, setToggle, toggle }) => {
                       />
                     }
                     label="Expense"
-                    value="Expese"
+                    value="Expense"
                   />
                 </div>
               </RadioGroup>

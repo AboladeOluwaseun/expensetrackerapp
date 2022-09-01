@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  transactions: 1,
+  transactions: [],
+  balance: 0,
+  incomeTotal: 0,
+  expenseTotal: 0,
 };
 
 export const transactionsSlice = createSlice({
@@ -9,18 +12,29 @@ export const transactionsSlice = createSlice({
   initialState,
   reducers: {
     addTransaction: (state, action) => {
-      state.transactions = state.transactions.push(action.payload);
+      state.transactions = state.transactions.concat(action.payload);
     },
-    decrement: (state) => {
-      state.transactions -= 1;
+    getTotalBalance: (state) => {
+      state.balance = state.incomeTotal - state.expenseTotal;
     },
-    incrementByAmount: (state, action) => {
-      state.transactions += action.payload;
+    getIncomeTotal: (state, action) => {
+      if (action.payload.category === "Income") {
+        state.incomeTotal = state.incomeTotal + +action.payload.amount;
+      }
+    },
+    getExpenseTotal: (state, action) => {
+      if (action.payload.category === "Expense") {
+        state.expenseTotal = state.expenseTotal + +action.payload.amount;
+      }
     },
   },
 });
 
-export const { addTransaction, decrement, incrementByAmount } =
-  transactionsSlice.actions;
+export const {
+  addTransaction,
+  getTotalBalance,
+  getIncomeTotal,
+  getExpenseTotal,
+} = transactionsSlice.actions;
 
 export default transactionsSlice.reducer;

@@ -4,18 +4,26 @@ import Item from "./Item";
 import EntryForm from "./EntryForm";
 import { useSelector } from "react-redux";
 
-const ItemsDisplay = ({ toggle }) => {
+const ItemsDisplay = ({ toggle, setToggle }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+  const transactions = useSelector(
+    (state) => state.transactionslice.transactions
+  );
+  console.log(transactions);
   const data = [];
-  const dataDisplay = data.map((dataItem, index) => {
+  const dataDisplay = transactions.map((transaction, index) => {
     return (
       <li key={index}>
         {" "}
-        <Item name={dataItem.Item} amount={dataItem.price} />
+        <Item
+          name={transaction.description}
+          amount={transaction.amount}
+          type={transaction.category}
+        />
       </li>
     );
   });
+  console.log(dataDisplay);
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
   };
@@ -61,7 +69,11 @@ const ItemsDisplay = ({ toggle }) => {
           <List>{dataDisplay}</List>
         </Paper>
       ) : (
-        <EntryForm windowWidth={windowWidth}></EntryForm>
+        <EntryForm
+          windowWidth={windowWidth}
+          toggle={toggle}
+          setToggle={setToggle}
+        ></EntryForm>
       )}
     </>
   );

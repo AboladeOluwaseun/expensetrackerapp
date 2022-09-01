@@ -1,6 +1,7 @@
 import React from "react";
 
-const Item = ({ name, amount }) => {
+const Item = ({ name, amount, type }) => {
+  console.log(type);
   return (
     <>
       <>
@@ -9,7 +10,12 @@ const Item = ({ name, amount }) => {
             <p>{name}</p>
             <p>${amount}</p>
           </div>
-          <span className="bg-red  border-incomegreen border-4 border-solid"></span>
+
+          <span
+            className={`${
+              type === "Income" ? "border-incomegreen" : "border-expensered"
+            } border-4 border-solid`}
+          ></span>
         </div>
       </>
     </>

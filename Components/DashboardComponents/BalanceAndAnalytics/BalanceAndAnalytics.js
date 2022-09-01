@@ -64,7 +64,6 @@ const BalanceAndAnalytics = () => {
         ),
       1000
     );
-    console.log(displayIndex);
 
     return resetTimeOut();
   }, [displayIndex, setDisplayIndex]);
