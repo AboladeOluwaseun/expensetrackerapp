@@ -24,6 +24,7 @@ const theme = createTheme({
   },
 });
 const EntryForm = ({ windowWidth, setToggle, toggle }) => {
+  const [noIncome, setNoIncome] = useState(false);
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("Income");
@@ -33,16 +34,18 @@ const EntryForm = ({ windowWidth, setToggle, toggle }) => {
     e.preventDefault();
     if (description && amount) {
       const payload = { description, amount, category };
+
       dispatch(addTransaction(payload));
       setToggle(!toggle);
       dispatch(getIncomeTotal(payload));
       dispatch(getExpenseTotal(payload));
-      dispatch(getTotalBalance());
+      dispatch(getTotalBalance(payload));
 
       setDescription("");
       setAmount("");
     } else console.log("enter a valid description or amount");
   };
+
   return (
     <>
       <div className="bg-white max-h-[100%] lmd:min-h-[91%]  mt-5 lmd:mt-0 rounded-lg lmd:p-3 ">
@@ -149,7 +152,7 @@ const EntryForm = ({ windowWidth, setToggle, toggle }) => {
                     },
                   }}
                 >
-                  Add Income
+                  {category === "Income" ? " Add Income" : "Add Expense"}
                 </Button>
               </Box>
             ) : (
@@ -179,7 +182,7 @@ const EntryForm = ({ windowWidth, setToggle, toggle }) => {
                     },
                   }}
                 >
-                  Add Income
+                  {category === "Income" ? " Add Income" : "Add Expense"}
                 </Button>
               </Box>
             )}

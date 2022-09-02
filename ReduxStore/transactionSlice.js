@@ -5,6 +5,7 @@ const initialState = {
   balance: 0,
   incomeTotal: 0,
   expenseTotal: 0,
+  noIncome: false,
 };
 
 export const transactionsSlice = createSlice({
@@ -12,10 +13,13 @@ export const transactionsSlice = createSlice({
   initialState,
   reducers: {
     addTransaction: (state, action) => {
-      state.transactions = state.transactions.concat(action.payload);
+      if (state.incomeTotal <= 0 && action.payload.category === "Expense") {
+      } else state.transactions = state.transactions.concat(action.payload);
     },
-    getTotalBalance: (state) => {
-      state.balance = state.incomeTotal - state.expenseTotal;
+    getTotalBalance: (state, action) => {
+      if (state.incomeTotal <= 0 && action.payload.category === "Expense") {
+        state.balance = 0;
+      } else state.balance = state.incomeTotal - state.expenseTotal;
     },
     getIncomeTotal: (state, action) => {
       if (action.payload.category === "Income") {
@@ -24,7 +28,9 @@ export const transactionsSlice = createSlice({
     },
     getExpenseTotal: (state, action) => {
       if (action.payload.category === "Expense") {
-        state.expenseTotal = state.expenseTotal + +action.payload.amount;
+        if (state.incomeTotal <= 0) {
+          state.expenseTotal = 0;
+        } else state.expenseTotal = state.expenseTotal + +action.payload.amount;
       }
     },
   },

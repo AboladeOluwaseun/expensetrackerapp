@@ -9,6 +9,7 @@ const ItemsDisplay = ({ toggle, setToggle }) => {
   const transactions = useSelector(
     (state) => state.transactionslice.transactions
   );
+
   console.log(transactions);
   const data = [];
   const dataDisplay = transactions.map((transaction, index) => {
@@ -23,7 +24,7 @@ const ItemsDisplay = ({ toggle, setToggle }) => {
       </li>
     );
   });
-  console.log(dataDisplay);
+
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
   };
@@ -33,6 +34,7 @@ const ItemsDisplay = ({ toggle, setToggle }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   return (
     <>
       {windowWidth > 924 ? (
@@ -50,7 +52,11 @@ const ItemsDisplay = ({ toggle, setToggle }) => {
             },
           }}
         >
-          <List>{dataDisplay}</List>
+          {noIncome ? (
+            <p>you must add Income before adding expense</p>
+          ) : (
+            <List>{dataDisplay}</List>
+          )}
         </Paper>
       ) : !toggle ? (
         <Paper
@@ -66,7 +72,13 @@ const ItemsDisplay = ({ toggle, setToggle }) => {
             },
           }}
         >
-          <List>{dataDisplay}</List>
+          {noIncome ? (
+            <p className="text-center mt-2 text-red-600">
+              you must add Income before adding expense
+            </p>
+          ) : (
+            <List>{dataDisplay}</List>
+          )}
         </Paper>
       ) : (
         <EntryForm
