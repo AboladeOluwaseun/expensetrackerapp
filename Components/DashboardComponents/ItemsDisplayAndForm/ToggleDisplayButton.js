@@ -25,7 +25,7 @@ const theme = createTheme({
 const ToggleDisplayButton = ({ setToggle, toggle }) => {
   return (
     <>
-      <div className=" max-w-[100%] mt-10 flex items-center justify-center space-x-5 sticky bottom-0 rounded-bl-none rounded-br-none bg-gray-900 rounded-lg text-center mx-auto">
+      <div className=" max-w-[100%] mt-36 flex items-center justify-center space-x-5 sticky bottom-0 rounded-bl-none rounded-br-none bg-gray-900 rounded-lg text-center mx-auto">
         <IconButton onClick={() => {}}>
           <SettingsIcon
             sx={{ width: 30, height: 30 }}

@@ -32,14 +32,13 @@ const EntryForm = ({ windowWidth, setToggle, toggle }) => {
 
   const noIncomeTimeOut = setTimeout(() => {
     setNoIncome(!noIncome);
-    return noIncome;
   }, 2000);
 
   const formHandler = (e) => {
     e.preventDefault();
     if (description && amount) {
       const payload = { description, amount, category };
-
+      const expensePayload = { payload, noIncomeTimeOut };
       dispatch(addTransaction(payload));
       setToggle(!toggle);
       dispatch(getIncomeTotal(payload));

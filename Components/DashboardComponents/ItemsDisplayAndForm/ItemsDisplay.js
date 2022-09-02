@@ -58,7 +58,7 @@ const ItemsDisplay = ({ toggle, setToggle }) => {
         <Paper
           style={{
             borderRadius: "8px",
-            marginTop: 30,
+            marginTop: 45,
             maxHeight: 430,
           }}
           sx={{
