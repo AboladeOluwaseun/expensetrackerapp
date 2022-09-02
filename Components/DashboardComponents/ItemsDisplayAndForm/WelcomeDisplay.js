@@ -5,7 +5,7 @@ const WelcomeDisplay = ({ windowWidth }) => {
   return (
     <>
       <Paper>
-        <div className={`py-6 ${windowWidth < 924 ? "mt-16" : "mt-0"} `}>
+        <div className={`py-6 ${windowWidth < 924 ? "mt-32" : "mt-0"} `}>
           <h4 className={"text-violet text-center  text-[4rem]"}>welcome!</h4>
           <p className="text-center  mt-4">
             {windowWidth < 924
