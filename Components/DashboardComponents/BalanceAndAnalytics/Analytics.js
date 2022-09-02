@@ -18,7 +18,10 @@ const Analytics = () => {
         label: "Rainfall",
         backgroundColor: ["#fac960", "#fff"],
         hoverBackgroundColor: ["#fac960", "#fff"],
-        data: [incomeTotal, expenseTotal],
+        data: [
+          incomeTotal === 0 ? 1 : incomeTotal,
+          expenseTotal === 0 ? 1 : expenseTotal,
+        ],
       },
     ],
   };

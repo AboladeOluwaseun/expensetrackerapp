@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { List, Paper } from "@mui/material";
 import Item from "./Item";
 import EntryForm from "./EntryForm";
+import WelcomeDisplay from "./WelcomeDisplay";
+import NoIncomeError from "./NoIncomeError";
 import { useSelector } from "react-redux";
 
 const ItemsDisplay = ({ toggle, setToggle }) => {
@@ -40,12 +42,7 @@ const ItemsDisplay = ({ toggle, setToggle }) => {
   return (
     <>
       {dataDisplay.length <= 0 && !noIncomeState && !toggle ? (
-        <div className="py-6 mt-8">
-          <h4 className={"text-violet text-center  text-[4rem]"}>welcome!</h4>
-          <p className="text-center  mt-4">
-            click on the "+" button below to add Income
-          </p>
-        </div>
+        <WelcomeDisplay windowWidth={windowWidth} />
       ) : windowWidth > 924 ? (
         <Paper
           style={{
@@ -61,7 +58,7 @@ const ItemsDisplay = ({ toggle, setToggle }) => {
             },
           }}
         >
-          <List>{dataDisplay}</List>
+          {noIncomeState ? <NoIncomeError /> : <List>{dataDisplay}</List>}
         </Paper>
       ) : !toggle ? (
         <Paper
@@ -77,16 +74,7 @@ const ItemsDisplay = ({ toggle, setToggle }) => {
             },
           }}
         >
-          {noIncomeState ? (
-            <div className="py-6">
-              <h4 className="text-violet text-center  text-[4rem]">Ooops!</h4>
-              <p className="text-center  mt-4">
-                You must have an Income before adding expense
-              </p>
-            </div>
-          ) : (
-            <List>{dataDisplay}</List>
-          )}
+          {noIncomeState ? <NoIncomeError /> : <List>{dataDisplay}</List>}
         </Paper>
       ) : (
         <EntryForm
