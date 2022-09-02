@@ -24,13 +24,17 @@ export const transactionsSlice = createSlice({
     getIncomeTotal: (state, action) => {
       if (action.payload.category === "Income") {
         state.incomeTotal = state.incomeTotal + +action.payload.amount;
+        state.noIncome = false;
       }
     },
     getExpenseTotal: (state, action) => {
       if (action.payload.category === "Expense") {
         if (state.incomeTotal <= 0) {
           state.expenseTotal = 0;
-        } else state.expenseTotal = state.expenseTotal + +action.payload.amount;
+          state.noIncome = true;
+        } else {
+          state.expenseTotal = state.expenseTotal + +action.payload.amount;
+        }
       }
     },
   },

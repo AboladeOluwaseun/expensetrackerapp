@@ -6,12 +6,14 @@ import { useSelector } from "react-redux";
 
 const ItemsDisplay = ({ toggle, setToggle }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const expenseTotal = useSelector(
+    (state) => state.transactionslice.expenseTotal
+  );
   const transactions = useSelector(
     (state) => state.transactionslice.transactions
   );
+  const noIncomeState = useSelector((state) => state.transactionslice.noIncome);
 
-  console.log(transactions);
-  const data = [];
   const dataDisplay = transactions.map((transaction, index) => {
     return (
       <li key={index}>
@@ -37,7 +39,14 @@ const ItemsDisplay = ({ toggle, setToggle }) => {
 
   return (
     <>
-      {windowWidth > 924 ? (
+      {dataDisplay.length <= 0 && !noIncomeState && !toggle ? (
+        <div className="py-6 mt-8">
+          <h4 className={"text-violet text-center  text-[4rem]"}>welcome!</h4>
+          <p className="text-center  mt-4">
+            click on the "+" button below to add Income
+          </p>
+        </div>
+      ) : windowWidth > 924 ? (
         <Paper
           style={{
             borderRadius: "8px",
@@ -68,7 +77,16 @@ const ItemsDisplay = ({ toggle, setToggle }) => {
             },
           }}
         >
-          <List>{dataDisplay}</List>
+          {noIncomeState ? (
+            <div className="py-6">
+              <h4 className="text-violet text-center  text-[4rem]">Ooops!</h4>
+              <p className="text-center  mt-4">
+                You must have an Income before adding expense
+              </p>
+            </div>
+          ) : (
+            <List>{dataDisplay}</List>
+          )}
         </Paper>
       ) : (
         <EntryForm

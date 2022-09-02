@@ -1,7 +1,6 @@
 import React from "react";
 
 const Item = ({ name, amount, type }) => {
-  console.log(type);
   return (
     <>
       <>
