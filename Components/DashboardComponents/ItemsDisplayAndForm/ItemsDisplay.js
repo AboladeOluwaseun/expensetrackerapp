@@ -52,11 +52,7 @@ const ItemsDisplay = ({ toggle, setToggle }) => {
             },
           }}
         >
-          {noIncome ? (
-            <p>you must add Income before adding expense</p>
-          ) : (
-            <List>{dataDisplay}</List>
-          )}
+          <List>{dataDisplay}</List>
         </Paper>
       ) : !toggle ? (
         <Paper
@@ -72,13 +68,7 @@ const ItemsDisplay = ({ toggle, setToggle }) => {
             },
           }}
         >
-          {noIncome ? (
-            <p className="text-center mt-2 text-red-600">
-              you must add Income before adding expense
-            </p>
-          ) : (
-            <List>{dataDisplay}</List>
-          )}
+          <List>{dataDisplay}</List>
         </Paper>
       ) : (
         <EntryForm
