@@ -24,21 +24,15 @@ const theme = createTheme({
   },
 });
 const EntryForm = ({ windowWidth, setToggle, toggle }) => {
-  const [noIncome, setNoIncome] = useState(false);
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("Income");
   const dispatch = useDispatch();
 
-  const noIncomeTimeOut = setTimeout(() => {
-    setNoIncome(!noIncome);
-  }, 2000);
-
   const formHandler = (e) => {
     e.preventDefault();
     if (description && amount) {
       const payload = { description, amount, category };
-      const expensePayload = { payload, noIncomeTimeOut };
       dispatch(addTransaction(payload));
       setToggle(!toggle);
       dispatch(getIncomeTotal(payload));
