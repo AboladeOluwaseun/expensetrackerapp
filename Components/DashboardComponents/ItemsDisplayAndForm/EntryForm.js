@@ -30,6 +30,11 @@ const EntryForm = ({ windowWidth, setToggle, toggle }) => {
   const [category, setCategory] = useState("Income");
   const dispatch = useDispatch();
 
+  const noIncomeTimeOut = setTimeout(() => {
+    setNoIncome(!noIncome);
+    return noIncome;
+  }, 2000);
+
   const formHandler = (e) => {
     e.preventDefault();
     if (description && amount) {
