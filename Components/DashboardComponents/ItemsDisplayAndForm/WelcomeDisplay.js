@@ -4,17 +4,11 @@ import { Paper } from "@mui/material";
 const WelcomeDisplay = ({ windowWidth }) => {
   return (
     <>
-      <div className={`py-6  `}>
-        <Paper>
-          <div>
-            <h4 className={"text-violet text-center  text-[4rem]"}>welcome!</h4>
-            <p className="text-center  mt-4">
-              {windowWidth < 924
-                ? 'click on the "+" button below to add Income'
-                : "fill the form below to add Income/Expense"}
-            </p>
-          </div>
-        </Paper>
+      <div className="py-6 bg-white rounded-lg lmd:mt-0 mt-8">
+        <h4 className="text-violet text-center  text-[4rem]">Welcome</h4>
+        <p className="text-center  mt-4">
+          Click the "+" button below to add an Income
+        </p>
       </div>
     </>
   );
