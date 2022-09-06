@@ -6,17 +6,16 @@ import WelcomeDisplay from "./WelcomeDisplay";
 import NoIncomeError from "./NoIncomeError";
 import { useSelector } from "react-redux";
 
-const ItemsDisplay = ({ toggle, setToggle }) => {
+const ItemsDisplay = ({
+  toggle,
+  setToggle,
+  filteredTransactions,
+  setFilteredTransactions,
+}) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const expenseTotal = useSelector(
-    (state) => state.transactionslice.expenseTotal
-  );
-  const transactions = useSelector(
-    (state) => state.transactionslice.transactions
-  );
   const noIncomeState = useSelector((state) => state.transactionslice.noIncome);
 
-  const dataDisplay = transactions.map((transaction, index) => {
+  const dataDisplay = filteredTransactions.map((transaction, index) => {
     return (
       <li key={index}>
         {" "}
@@ -42,7 +41,7 @@ const ItemsDisplay = ({ toggle, setToggle }) => {
   return (
     <>
       {dataDisplay.length <= 0 && !noIncomeState && !toggle ? (
-        <WelcomeDisplay windowWidth={windowWidth} />
+        <WelcomeDisplay />
       ) : windowWidth > 924 ? (
         <Paper
           style={{

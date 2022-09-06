@@ -38,7 +38,7 @@ const EntryForm = ({ windowWidth, setToggle, toggle }) => {
       dispatch(getIncomeTotal(payload));
       dispatch(getExpenseTotal(payload));
       dispatch(getTotalBalance(payload));
-
+      e.target.reset();
       setDescription("");
       setAmount("");
     } else console.log("enter a valid description or amount");
@@ -68,8 +68,8 @@ const EntryForm = ({ windowWidth, setToggle, toggle }) => {
                 setAmount(e.target.value);
               }}
               type="number"
-              name="description"
-              id="description"
+              name="amount"
+              id="amount"
               placeholder="Enter Amount..."
               className="border-[1px] mt-5 block border-solid border-gray-900 outline-violet w-full rounded-lg p-2"
             />

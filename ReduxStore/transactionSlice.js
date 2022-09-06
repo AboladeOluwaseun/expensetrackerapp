@@ -6,6 +6,8 @@ const initialState = {
   incomeTotal: 0,
   expenseTotal: 0,
   noIncome: false,
+  filtredTransactionsState: [],
+  searchedTransactions: [],
 };
 
 export const transactionsSlice = createSlice({
@@ -37,6 +39,32 @@ export const transactionsSlice = createSlice({
         }
       }
     },
+    transactionTypeDisplay: (state, action) => {
+      if (action.payload === "All") {
+        state.filtredTransactionsState = state.transactions;
+      } else {
+        if (action.payload === "Income" || "Expense") {
+          state.filtredTransactionsState = state.transactions.filter(
+            (transaction) => transaction.category === action.payload
+          );
+        }
+      }
+    },
+    searchTransaction: (state, action) => {
+      if (action.payload) {
+        state.searchedTransactions = state.transactions.filter(
+          (transaction) => {
+            return (
+              transaction.description
+                .toLowerCase()
+                .indexOf(action.payload.toString()) > -1
+            );
+          }
+        );
+      } else if (action.payload === "") {
+        state.searchedTransactions = state.transactions;
+      }
+    },
   },
 });
 
@@ -45,6 +73,8 @@ export const {
   getTotalBalance,
   getIncomeTotal,
   getExpenseTotal,
+  transactionTypeDisplay,
+  searchTransaction,
 } = transactionsSlice.actions;
 
 export default transactionsSlice.reducer;
