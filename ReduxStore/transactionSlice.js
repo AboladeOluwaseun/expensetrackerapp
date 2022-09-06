@@ -8,6 +8,7 @@ const initialState = {
   noIncome: false,
   filtredTransactionsState: [],
   searchedTransactions: [],
+  openSearch: false,
 };
 
 export const transactionsSlice = createSlice({
@@ -65,6 +66,10 @@ export const transactionsSlice = createSlice({
         state.searchedTransactions = state.transactions;
       }
     },
+    displaySearchBar: (state) => {
+      state.openSearch = !state.openSearch;
+      console.log(state.openSearch);
+    },
   },
 });
 
@@ -75,6 +80,7 @@ export const {
   getExpenseTotal,
   transactionTypeDisplay,
   searchTransaction,
+  displaySearchBar,
 } = transactionsSlice.actions;
 
 export default transactionsSlice.reducer;

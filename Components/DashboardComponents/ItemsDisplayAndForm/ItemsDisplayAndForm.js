@@ -33,6 +33,8 @@ const ItemsDisplayAndForm = () => {
   }, [transactions]);
 
   useEffect(() => {
+    if (searchedTransactions === []) {
+    }
     setFilteredTransactions(searchedTransactions);
   }, [searchedTransactions]);
 

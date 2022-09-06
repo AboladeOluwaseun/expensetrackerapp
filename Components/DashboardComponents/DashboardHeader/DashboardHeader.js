@@ -1,16 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import SearchIcon from "@mui/icons-material/Search";
+
 import avatar from "../../../Assets/AuthAssets/image-avatar.png";
-import { useDispatch } from "react-redux";
-import { searchTransaction } from "../../../ReduxStore/transactionSlice";
+import SearchBar from "./SearchBar";
 
 const DashboardHeader = () => {
-  const dispatch = useDispatch();
-  const searchTransactionHandler = (text) => {
-    dispatch(searchTransaction(text));
-  };
-
   return (
     <div className="pt-4 flex items-center justify-between">
       {/* <h2 className="hidden lmd:block text-[2rem] font-bold">Logo</h2> */}
@@ -21,18 +15,8 @@ const DashboardHeader = () => {
         <p className="text-[1.3rem]"> Welcome</p>
       </div>
 
-      <div className="hidden md:block relative">
-        <input
-          onKeyUp={(e) => {
-            searchTransactionHandler(e.target.value);
-          }}
-          className="w-[20rem]  lmd:block border-darkgrey border-solid border-[1px] h-8 py-6 px-4 rounded-[1.5rem] focus:outline-none"
-          type="search"
-          name="search"
-          id=""
-          placeholder="search expense or income"
-        />
-        <SearchIcon className=" cursor-pointer absolute top-4 right-4" />
+      <div className="hidden lmd:block">
+        <SearchBar />
       </div>
 
       <div className="h-[3rem] cursor-pointer rounded-full border-2 border-violet border-solid active:scale-105 w-[3rem]">
