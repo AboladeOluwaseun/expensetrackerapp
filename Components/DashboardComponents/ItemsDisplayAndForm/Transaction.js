@@ -1,6 +1,6 @@
 import React from "react";
 
-const Item = ({ name, amount, type }) => {
+const Transaction = ({ name, amount, type }) => {
   return (
     <>
       <>
@@ -21,4 +21,4 @@ const Item = ({ name, amount, type }) => {
   );
 };
 
-export default Item;
+export default Transaction;

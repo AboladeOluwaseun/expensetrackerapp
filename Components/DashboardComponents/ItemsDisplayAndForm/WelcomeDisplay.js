@@ -17,7 +17,7 @@ const WelcomeDisplay = () => {
             ? "Ooops"
             : "Welcome"}
         </h4>
-        <p className="text-center  mt-4">
+        <p className="text-center mt-4">
           {searchedTransactions.length <= 0 && transactions.length >= 1
             ? "the transaction you searched for is not available"
             : "Click the " + " button below to add an Income"}

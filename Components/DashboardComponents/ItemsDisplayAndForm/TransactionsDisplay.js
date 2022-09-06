@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { List, Paper } from "@mui/material";
-import Item from "./Item";
+import Transaction from "./Transaction";
 import EntryForm from "./EntryForm";
 import WelcomeDisplay from "./WelcomeDisplay";
 import NoIncomeError from "./NoIncomeError";
 import { useSelector } from "react-redux";
 
-const ItemsDisplay = ({
+const TransactionsDisplay = ({
   toggle,
   setToggle,
   filteredTransactions,
@@ -19,7 +19,7 @@ const ItemsDisplay = ({
     return (
       <li key={index}>
         {" "}
-        <Item
+        <Transaction
           name={transaction.description}
           amount={transaction.amount}
           type={transaction.category}
@@ -86,4 +86,4 @@ const ItemsDisplay = ({
   );
 };
 
-export default ItemsDisplay;
+export default TransactionsDisplay;

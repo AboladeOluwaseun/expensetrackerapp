@@ -1,14 +1,13 @@
 import React from "react";
-import AddIcon from "@mui/icons-material/Add";
-import ReceiptIcon from "@mui/icons-material/Receipt";
 import { IconButton } from "@mui/material";
-import { createTheme } from "@mui/material";
 import HistoryIcon from "@mui/icons-material/History";
-import SettingsIcon from "@mui/icons-material/Settings";
 import { useDispatch, useSelector } from "react-redux";
 import { displaySearchBar } from "../../../ReduxStore/transactionSlice";
 import SearchBar from "../DashboardHeader/SearchBar";
 import SearchIcon from "@mui/icons-material/Search";
+import MiddleButtons from "./MiddleButtons";
+import { createTheme } from "@mui/material";
+
 const theme = createTheme({
   status: {
     danger: "#e53e3e",
@@ -58,36 +57,7 @@ const ToggleDisplayButton = ({ setToggle, toggle }) => {
           />
         </IconButton>
 
-        {toggle ? (
-          <IconButton
-            onClick={() => {
-              setToggle(!toggle);
-            }}
-          >
-            <ReceiptIcon
-              sx={{ width: 50, height: 50 }}
-              fontSize="large"
-              theme={theme}
-              color="neutral"
-              className="rounded-full p-1 "
-            />
-          </IconButton>
-        ) : (
-          <IconButton
-            onClick={() => {
-              dispatch(displaySearchBar());
-              setToggle(!toggle);
-            }}
-          >
-            <AddIcon
-              sx={{ width: 50, height: 50 }}
-              fontSize="large"
-              theme={theme}
-              color="neutral"
-              className=" p-1 rounded-full"
-            />
-          </IconButton>
-        )}
+        <MiddleButtons setToggle={setToggle} toggle={toggle} />
 
         <IconButton onClick={() => {}}>
           <HistoryIcon

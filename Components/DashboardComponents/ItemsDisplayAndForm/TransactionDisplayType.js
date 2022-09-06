@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { transactionTypeDisplay } from "../../../ReduxStore/transactionSlice";
 import { useSelector } from "react-redux";
 
-const ItemDisplayType = ({ setFilteredTransactions }) => {
+const TransactionDisplayType = ({ setFilteredTransactions }) => {
   const itemTypes = ["All", "Income", "Expense"];
   const dispatch = useDispatch();
   const filtredTransactionsState = useSelector(
@@ -42,4 +42,4 @@ const ItemDisplayType = ({ setFilteredTransactions }) => {
   );
 };
 
-export default ItemDisplayType;
+export default TransactionDisplayType;

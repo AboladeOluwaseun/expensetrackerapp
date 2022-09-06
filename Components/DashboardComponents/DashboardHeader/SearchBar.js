@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { searchTransaction } from "../../../ReduxStore/transactionSlice";
 import SearchIcon from "@mui/icons-material/Search";
-import { useSelector } from "react-redux";
+
 const SearchBar = () => {
   const dispatch = useDispatch();
   const searchTransactionHandler = (searchParams) => {

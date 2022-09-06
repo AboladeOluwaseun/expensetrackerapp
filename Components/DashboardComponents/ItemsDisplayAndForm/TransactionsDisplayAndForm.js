@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import ItemDisplayType from "./ItemDisplayType";
-import ItemsDisplay from "./ItemsDisplay";
+import TransactionDisplayType from "./TransactionDisplayType";
+import TransactionsDisplay from "./TransactionsDisplay";
 import ToggleDisplayButton from "./ToggleDisplayButton";
 import EntryForm from "./EntryForm";
 import { useSelector } from "react-redux";
@@ -41,12 +41,12 @@ const ItemsDisplayAndForm = () => {
   return (
     <>
       <div className="mt-10 relative lmd:mt-0 lmd:gap-2 grid grid-rows-itemsandformresponsive lmd:grid-rows-itemsandform">
-        <ItemDisplayType
+        <TransactionDisplayType
           filteredTransactions={filteredTransactions}
           setFilteredTransactions={setFilteredTransactions}
         />
 
-        <ItemsDisplay
+        <TransactionsDisplay
           toggle={toggle}
           setToggle={setToggle}
           filteredTransactions={filteredTransactions}
