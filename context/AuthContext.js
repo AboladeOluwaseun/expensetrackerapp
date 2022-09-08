@@ -1,13 +1,12 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { auth } from "../config/fire";
-import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import { useRouter } from "next/router";
 
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
-  onAuthStateChanged,
 } from "@firebase/auth";
 
 const AuthContext = React.createContext();
@@ -17,25 +16,70 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [errmsg, setErrMsg] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [loggingOut, setLoggingOut] = useState(false);
+  const [loggingIn, setLoggingIn] = useState(false);
+  const [data, setData] = useState([]);
   const userInfo = useRef();
+  const router = useRouter();
 
+  // SignUp
   const signUp = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password);
+    setIsLoading(true);
+    setLoggingIn(false);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((cred) => {
+        console.log(cred);
+        router.push("/Dashboard/DashboardPage");
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        if (err.code === "auth/weak-password") {
+          setErrMsg("password must be at least 6 characters long");
+        } else setErrMsg(err.code);
+        setIsLoading(false);
+        setTimeout(() => {
+          setErrMsg(false);
+        }, 3000);
+      });
     return;
   };
-  const signIn = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
-  };
-
+  // ####SignOut######
   const logOut = () => {
-    return signOut(auth);
+    setLoggingOut(true);
+    signOut(auth).then(() => {
+      setIsLoading(false);
+      console.log("user logged out");
+      router.push("/");
+    });
+  };
+  // ####SignIn######
+  const logIn = (email, password) => {
+    setIsLoading(true);
+    setLoggingIn(true);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((cred) => {
+        router.push("/Dashboard/DashboardPage");
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        if (err.code === "auth/wrong-password") {
+          setErrMsg("invalid/wrong password");
+        } else if (err.code === "auth/internal-error") {
+          setErrMsg("Enter a valid password");
+        } else setErrMsg(err.code);
+        setIsLoading(false);
+        setTimeout(() => {
+          setErrMsg(false);
+        }, 3000);
+      });
+    return;
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
-      setLoading(false);
     });
     return unsubscribe();
   }, []);
@@ -43,13 +87,14 @@ export const AuthProvider = ({ children }) => {
   const value = {
     currentUser,
     signUp,
-    signIn,
     logOut,
+    logIn,
     userInfo,
+    errmsg,
+    isLoading,
+    loggingOut,
+    loggingIn,
+    data,
   };
-  return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

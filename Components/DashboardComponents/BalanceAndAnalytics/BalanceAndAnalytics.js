@@ -22,7 +22,7 @@ const theme = createTheme({
 });
 
 const BalanceAndAnalytics = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState("");
   const [displayIndex, setDisplayIndex] = useState(0);
   const timeOutRef = useRef(null);
   const BalanceAndAnalyticsDisplay = [
@@ -57,19 +57,6 @@ const BalanceAndAnalytics = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  // useEffect(() => {
-  //   resetTimeOut();
-  //   timeOutRef.current = setTimeout(
-  //     () =>
-  //       setDisplayIndex((prev) =>
-  //         prev === BalanceAndAnalyticsDisplay.length - 1 ? 0 : prev + 1
-  //       ),
-  //     1000
-  //   );
-
-  //   return resetTimeOut();
-  // }, [displayIndex, setDisplayIndex]);
 
   return (
     <>

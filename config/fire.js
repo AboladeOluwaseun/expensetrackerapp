@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-
+import { getAuth, connectAuthEmulator } from "firebase/auth";
+import { getFirestore, getDocs } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyDgfXH-RSTesQquMYjKMjSPIiTuYsrS5q0",
   authDomain: "expensetracker-9336e.firebaseapp.com",
@@ -14,3 +14,4 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const db = getFirestore(app);

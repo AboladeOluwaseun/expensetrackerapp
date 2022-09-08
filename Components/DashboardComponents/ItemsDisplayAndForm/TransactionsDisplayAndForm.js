@@ -3,18 +3,11 @@ import TransactionDisplayType from "./TransactionDisplayType";
 import TransactionsDisplay from "./TransactionsDisplay";
 import ToggleDisplayButton from "./ToggleDisplayButton";
 import EntryForm from "./EntryForm";
-import { useSelector } from "react-redux";
 
 const ItemsDisplayAndForm = () => {
   const [toggle, setToggle] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState("");
 
-  const transactions = useSelector(
-    (state) => state.transactionslice.transactions
-  );
-  const searchedTransactions = useSelector(
-    (state) => state.transactionslice.searchedTransactions
-  );
   const [filteredTransactions, setFilteredTransactions] = useState([]);
 
   const handleResize = () => {
@@ -27,16 +20,6 @@ const ItemsDisplayAndForm = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  useEffect(() => {
-    setFilteredTransactions(transactions);
-  }, [transactions]);
-
-  useEffect(() => {
-    if (searchedTransactions === []) {
-    }
-    setFilteredTransactions(searchedTransactions);
-  }, [searchedTransactions]);
 
   return (
     <>

@@ -5,17 +5,6 @@ import DashboardHeader from "./DashboardHeader/DashboardHeader";
 import DashboardDetails from "./DashboardDetails";
 import MenuBar from "./MenuBar";
 const Dashboard = () => {
-  const { logOut, currentUser } = useAuth();
-
-  const logOutHandler = async (e) => {
-    e.preventDefault();
-    logOut();
-    if (!currentUser) {
-      console.log(currentUser);
-      await Router.push("/Auth/Register");
-    }
-  };
-
   return (
     <>
       <div className="bg-[#ebebeb] max-h-[100%]">

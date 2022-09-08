@@ -44,10 +44,6 @@ const MiddleButtons = ({ setToggle, toggle }) => {
       ) : (
         <IconButton
           onClick={() => {
-            if (openSearchBar) {
-              dispatch(displaySearchBar());
-            }
-
             setToggle(!toggle);
           }}
         >

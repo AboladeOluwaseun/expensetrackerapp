@@ -6,6 +6,8 @@ import { FormControlLabel, FormControl, FormLabel } from "@mui/material";
 import { Box } from "@mui/material";
 import { createTheme } from "@mui/system";
 import { useDispatch } from "react-redux";
+import { db } from "../../../config/fire";
+import { addDoc, collection } from "firebase/firestore";
 import {
   addTransaction,
   getTotalBalance,
@@ -23,22 +25,28 @@ const theme = createTheme({
     },
   },
 });
+
 const EntryForm = ({ windowWidth, setToggle, toggle }) => {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("Income");
   const dispatch = useDispatch();
+  const colRef = collection(db, "transactions");
 
   const formHandler = (e) => {
     e.preventDefault();
     if (description && amount) {
       const payload = { description, amount, category };
-      dispatch(addTransaction(payload));
+      // dispatch(addTransaction(payload));
+      addDoc(colRef, {
+        description,
+        category,
+        amount: +amount,
+      }).then(e.target.reset());
       setToggle(!toggle);
-      dispatch(getIncomeTotal(payload));
-      dispatch(getExpenseTotal(payload));
-      dispatch(getTotalBalance(payload));
-      e.target.reset();
+      // dispatch(getIncomeTotal(payload));
+      // dispatch(getExpenseTotal(payload));
+      // dispatch(getTotalBalance(payload));
       setDescription("");
       setAmount("");
     } else console.log("enter a valid description or amount");
@@ -143,7 +151,7 @@ const EntryForm = ({ windowWidth, setToggle, toggle }) => {
 
                     backgroundColor: "#8464C9",
                     ":active": {
-                      backgroundColor: "white",
+                      backgroundColor: "#8464C9",
                     },
                     ":hover": {
                       backgroundColor: "#8464C9",
@@ -173,7 +181,7 @@ const EntryForm = ({ windowWidth, setToggle, toggle }) => {
 
                     backgroundColor: "#8464C9",
                     ":active": {
-                      backgroundColor: "white",
+                      backgroundColor: "#8464C9",
                     },
                     ":hover": {
                       backgroundColor: "#8464C9",

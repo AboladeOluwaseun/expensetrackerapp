@@ -5,6 +5,17 @@ import EntryForm from "./EntryForm";
 import WelcomeDisplay from "./WelcomeDisplay";
 import NoIncomeError from "./NoIncomeError";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { db } from "../../../config/fire";
+import { onSnapshot, collection } from "firebase/firestore";
+import {
+  setTransaction,
+  setTotalBalance,
+  setIncomeTotal,
+  setExpenseTotal,
+} from "../../../ReduxStore/transactionSlice";
+
+const colRef = collection(db, "transactions");
 
 const TransactionsDisplay = ({
   toggle,
@@ -12,9 +23,16 @@ const TransactionsDisplay = ({
   filteredTransactions,
   setFilteredTransactions,
 }) => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState("");
   const noIncomeState = useSelector((state) => state.transactionslice.noIncome);
+  const dispatch = useDispatch();
 
+  const transactions = useSelector(
+    (state) => state.transactionslice.transactions
+  );
+  const searchedTransactions = useSelector(
+    (state) => state.transactionslice.searchedTransactions
+  );
   const dataDisplay = filteredTransactions.map((transaction, index) => {
     return (
       <li key={index}>
@@ -37,6 +55,46 @@ const TransactionsDisplay = ({
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    setFilteredTransactions(transactions);
+  }, [transactions]);
+
+  // /////////LOGIC TO FETCH REALTIME TRANSACTIONS FROM DATABASE ONLOAD
+  useEffect(() => {
+    const gettransactions = async () => {
+      onSnapshot(colRef, (snapshot) => {
+        let transactionData = [];
+        snapshot.docs.forEach((doc) => transactionData.push(doc.data()));
+        dispatch(setTransaction(transactionData));
+
+        const allExpenses = transactionData.filter(
+          (transaction) => transaction.category === "Expense"
+        );
+        const allIncomes = transactionData.filter(
+          (transaction) => transaction.category === "Income"
+        );
+        const totalExpense = allExpenses.reduce((total, expense) => {
+          return total + expense.amount;
+        }, 0);
+        const totalIncome = allIncomes.reduce((total, income) => {
+          return total + income.amount;
+        }, 0);
+        const totalBalance = totalIncome - totalExpense;
+        dispatch(setTotalBalance(totalBalance));
+        dispatch(setIncomeTotal(totalIncome));
+        dispatch(setExpenseTotal(totalExpense));
+      });
+    };
+    gettransactions();
+  }, []);
+
+  // LODIC FOR SEARCHING TRANSACTIONS
+  useEffect(() => {
+    if (searchedTransactions === []) {
+    }
+    setFilteredTransactions(searchedTransactions);
+  }, [searchedTransactions]);
 
   return (
     <>

@@ -15,31 +15,43 @@ export const transactionsSlice = createSlice({
   name: "transactions",
   initialState,
   reducers: {
-    addTransaction: (state, action) => {
-      if (state.incomeTotal <= 0 && action.payload.category === "Expense") {
-      } else state.transactions = state.transactions.concat(action.payload);
+    setTransaction: (state, action) => {
+      state.transactions = action.payload;
     },
-    getTotalBalance: (state, action) => {
-      if (state.incomeTotal <= 0 && action.payload.category === "Expense") {
-        state.balance = 0;
-      } else state.balance = state.incomeTotal - state.expenseTotal;
+    setTotalBalance: (state, action) => {
+      state.balance = action.payload;
     },
-    getIncomeTotal: (state, action) => {
-      if (action.payload.category === "Income") {
-        state.incomeTotal = state.incomeTotal + +action.payload.amount;
-        state.noIncome = false;
-      }
+    setIncomeTotal: (state, action) => {
+      state.incomeTotal = action.payload;
     },
-    getExpenseTotal: (state, action) => {
-      if (action.payload.category === "Expense") {
-        if (state.incomeTotal <= 0) {
-          state.expenseTotal = 0;
-          state.noIncome = true;
-        } else {
-          state.expenseTotal = state.expenseTotal + +action.payload.amount;
-        }
-      }
+    setExpenseTotal: (state, action) => {
+      state.expenseTotal = action.payload;
     },
+    // addTransaction: (state, action) => {
+    //   if (state.incomeTotal <= 0 && action.payload.category === "Expense") {
+    //   } else state.transactions = state.transactions.concat(action.payload);
+    // },
+    // getTotalBalance: (state, action) => {
+    //   if (state.incomeTotal <= 0 && action.payload.category === "Expense") {
+    //     state.balance = 0;
+    //   } else state.balance = state.incomeTotal - state.expenseTotal;
+    // },
+    // getIncomeTotal: (state, action) => {
+    //   if (action.payload.category === "Income") {
+    //     state.incomeTotal = state.incomeTotal + +action.payload.amount;
+    //     state.noIncome = false;
+    //   }
+    // },
+    // getExpenseTotal: (state, action) => {
+    //   if (action.payload.category === "Expense") {
+    //     if (state.incomeTotal <= 0) {
+    //       state.expenseTotal = 0;
+    //       state.noIncome = true;
+    //     } else {
+    //       state.expenseTotal = state.expenseTotal + +action.payload.amount;
+    //     }
+    //   }
+    // },
     transactionTypeDisplay: (state, action) => {
       if (action.payload === "All") {
         state.filtredTransactionsState = state.transactions;
@@ -74,6 +86,10 @@ export const transactionsSlice = createSlice({
 });
 
 export const {
+  setTransaction,
+  setTotalBalance,
+  setIncomeTotal,
+  setExpenseTotal,
   addTransaction,
   getTotalBalance,
   getIncomeTotal,
