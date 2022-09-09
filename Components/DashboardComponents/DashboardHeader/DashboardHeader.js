@@ -3,11 +3,14 @@ import Image from "next/image";
 import { useAuth } from "../../../context/AuthContext";
 import avatar from "../../../Assets/AuthAssets/image-avatar.png";
 import SearchBar from "./SearchBar";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AccountDetails from "../../UI/AccountDetails";
 import { useState } from "react";
 import { useEffect } from "react";
 import { db } from "../../../config/fire";
 import { doc, onSnapshot } from "firebase/firestore";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import { IconButton } from "@mui/material";
 const DashboardHeader = () => {
   const [show, setShow] = useState(false);
   const { currentUser } = useAuth();
@@ -34,20 +37,20 @@ const DashboardHeader = () => {
           <SearchBar />
         </div>
 
-        <div
+        <IconButton
           onClick={() => {
             setShow(!show);
           }}
-          className="h-[3rem] cursor-pointer rounded-full border-2 border-violet border-solid active:scale-105 w-[3rem]"
         >
-          <Image
-            width={100}
-            height={100}
-            layout="intrinsic"
-            src={avatar}
-            alt="login-illustration"
+          <AccountCircle
+            sx={{
+              width: 50,
+              height: 50,
+              // border: "1px solid black",
+              // borderRadius: 50,
+            }}
           />
-        </div>
+        </IconButton>
       </div>
     </>
   );

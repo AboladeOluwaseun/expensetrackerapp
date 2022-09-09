@@ -13,11 +13,11 @@ const BalanceDisplay = () => {
     <>
       <div className="bg-violet rounded-lg text-white ">
         <div className="max-w-[95%]  py-3 mx-auto">
-          <div>
+          <div className="lmd:text-[1.5rem] font-bold">
             <p>Total Balance</p>
             <h2 className="text-[2rem]">&#8358;{balance}</h2>
           </div>
-          <div className="flex mt-9 text-[0.8rem] items-center justify-between">
+          <div className="flex font-bold mt-9 text-[0.8rem] lmd:mt-20 lmd:text-[1.5rem] items-center justify-between">
             <div>
               <p>Income</p>
               <h2>&#8358;{incomeTotal}</h2>

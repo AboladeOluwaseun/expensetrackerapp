@@ -68,8 +68,8 @@ export const AuthProvider = ({ children }) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((cred) => {
         router.push("/Dashboard/DashboardPage");
-        setIsLoading(false);
       })
+      .then(setIsLoading(false))
       .catch((err) => {
         if (err.code === "auth/wrong-password") {
           setErrMsg("invalid/wrong password");

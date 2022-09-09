@@ -52,7 +52,6 @@ const BalanceAndAnalytics = () => {
     setWindowWidth(window.innerWidth);
   };
   useEffect(() => {
-    setWindowWidth(windowWidth);
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -62,7 +61,7 @@ const BalanceAndAnalytics = () => {
   return (
     <>
       {windowWidth >= 924 ? (
-        <div className="  lmd:grid lmd:grid-rows-layout gap-y-[1.6rem]">
+        <div className="  grid grid-rows-layout gap-y-[1.6rem]">
           <BalanceDisplay></BalanceDisplay>
           <Analytics></Analytics>
         </div>
