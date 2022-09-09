@@ -52,6 +52,7 @@ const BalanceAndAnalytics = () => {
     setWindowWidth(window.innerWidth);
   };
   useEffect(() => {
+    setWindowWidth(windowWidth);
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
