@@ -33,10 +33,9 @@ const Register = () => {
       logIn(email, password);
     }
     if (!isSignedUp) {
-      signUp(email, password);
+      signUp(email, password, userName);
     }
   };
-  console.log(currentUser);
   return (
     <>
       <div className="h-[100vh]">

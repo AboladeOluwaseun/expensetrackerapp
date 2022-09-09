@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { auth } from "../config/fire";
+import { auth, db } from "../config/fire";
 import "firebase/compat/auth";
 import { useRouter } from "next/router";
 
@@ -8,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   signOut,
 } from "@firebase/auth";
+import { addDoc, doc, setDoc } from "firebase/firestore";
 
 const AuthContext = React.createContext();
 export const useAuth = () => {
@@ -25,12 +26,18 @@ export const AuthProvider = ({ children }) => {
   const router = useRouter();
 
   // SignUp
-  const signUp = (email, password) => {
+  const signUp = (email, password, username) => {
     setIsLoading(true);
     setLoggingIn(false);
     createUserWithEmailAndPassword(auth, email, password)
       .then((cred) => {
-        console.log(cred);
+        setDoc(doc(db, "users", cred.user.uid), {
+          email,
+          username,
+          transactions: [],
+        });
+      })
+      .then(() => {
         router.push("/Dashboard/DashboardPage");
         setIsLoading(false);
       })
@@ -68,6 +75,8 @@ export const AuthProvider = ({ children }) => {
           setErrMsg("invalid/wrong password");
         } else if (err.code === "auth/internal-error") {
           setErrMsg("Enter a valid password");
+        } else if (err.code === "auth/user-not-found") {
+          setErrMsg("You do not have an account, kindly sign up below");
         } else setErrMsg(err.code);
         setIsLoading(false);
         setTimeout(() => {
@@ -80,8 +89,9 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
+      console.log(currentUser);
     });
-    return unsubscribe();
+    return unsubscribe;
   }, []);
 
   const value = {

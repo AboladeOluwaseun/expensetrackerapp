@@ -7,7 +7,16 @@ import { Box } from "@mui/material";
 import { createTheme } from "@mui/system";
 import { useDispatch } from "react-redux";
 import { db } from "../../../config/fire";
-import { addDoc, collection } from "firebase/firestore";
+import { useAuth } from "../../../context/AuthContext";
+import {
+  addDoc,
+  collection,
+  serverTimestamp,
+  doc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+} from "firebase/firestore";
 import {
   addTransaction,
   getTotalBalance,
@@ -31,17 +40,21 @@ const EntryForm = ({ windowWidth, setToggle, toggle }) => {
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("Income");
   const dispatch = useDispatch();
-  const colRef = collection(db, "transactions");
+  const colRef = collection(db, "users");
+  const { currentUser } = useAuth();
 
   const formHandler = (e) => {
     e.preventDefault();
     if (description && amount) {
       const payload = { description, amount, category };
       // dispatch(addTransaction(payload));
-      addDoc(colRef, {
-        description,
-        category,
-        amount: +amount,
+      const userDocRef = doc(db, "users", currentUser.uid);
+      updateDoc(userDocRef, {
+        transactions: arrayUnion({
+          description,
+          category,
+          amount: +amount,
+        }),
       }).then(e.target.reset());
       setToggle(!toggle);
       // dispatch(getIncomeTotal(payload));
