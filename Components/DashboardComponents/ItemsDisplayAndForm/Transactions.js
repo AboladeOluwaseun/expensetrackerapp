@@ -3,6 +3,7 @@ import EntryForm from "./EntryForm";
 import WelcomeDisplay from "./WelcomeDisplay";
 import NoIncomeError from "./NoIncomeError";
 import { List, Paper } from "@mui/material";
+import Transaction from "./Transaction";
 
 const Transactions = ({
   filteredTransactions,
