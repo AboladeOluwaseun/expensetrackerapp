@@ -15,9 +15,9 @@ const BalanceDisplay = () => {
         <div className="max-w-[95%]  py-3 mx-auto">
           <div className="lmd:text-[1.5rem] font-bold">
             <p>Total Balance</p>
-            <h2 className="text-[2rem]">&#8358;{balance}</h2>
+            <h2 className="text-[2rem] lmd:text-[3rem]">&#8358;{balance}</h2>
           </div>
-          <div className="flex font-bold mt-9 text-[0.8rem] lmd:mt-20 lmd:text-[1.5rem] items-center justify-between">
+          <div className="flex font-bold mt-9 text-[0.8rem] lmd:mt-16 lmd:text-[1.5rem] items-center justify-between">
             <div>
               <p>Income</p>
               <h2>&#8358;{incomeTotal}</h2>

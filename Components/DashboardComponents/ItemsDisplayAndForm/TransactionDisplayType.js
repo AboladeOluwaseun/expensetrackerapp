@@ -21,7 +21,7 @@ const TransactionDisplayType = ({ setFilteredTransactions }) => {
           transactionsFilterHandler(button);
         }}
         key={index}
-        className=" w-[100%] py-2 text-center bg-slate-900 text-white active:text-black active:bg-white rounded-full"
+        className=" w-[100%] cursor-pointer py-2 text-center bg-slate-900 text-white active:text-black active:bg-white rounded-full"
       >
         {button}
       </li>

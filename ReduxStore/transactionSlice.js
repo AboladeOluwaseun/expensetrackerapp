@@ -67,11 +67,7 @@ export const transactionsSlice = createSlice({
       if (action.payload) {
         state.searchedTransactions = state.transactions.filter(
           (transaction) => {
-            return (
-              transaction.description
-                .toLowerCase()
-                .indexOf(action.payload.toString()) > -1
-            );
+            return transaction.description.indexOf(action.payload) > -1;
           }
         );
       } else if (action.payload === "") {

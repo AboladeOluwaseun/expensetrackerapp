@@ -160,7 +160,7 @@ const EntryForm = ({ windowWidth, setToggle, toggle }) => {
                   sx={{
                     textAlign: "center",
                     width: 200,
-                    paddingY: "1rem",
+                    // paddingY: "1rem",
 
                     backgroundColor: "#8464C9",
                     ":active": {

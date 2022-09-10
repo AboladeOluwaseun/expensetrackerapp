@@ -3,8 +3,8 @@ import AddIcon from "@mui/icons-material/Add";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import { IconButton } from "@mui/material";
 import { createTheme } from "@mui/material";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { displaySearchBar } from "../../../ReduxStore/transactionSlice";
 const theme = createTheme({
   status: {
     danger: "#e53e3e",
@@ -22,6 +22,7 @@ const theme = createTheme({
 });
 
 const MiddleButtons = ({ setToggle, toggle }) => {
+  const dispatch = useDispatch();
   const openSearchBar = useSelector(
     (state) => state.transactionslice.openSearch
   );
@@ -31,6 +32,7 @@ const MiddleButtons = ({ setToggle, toggle }) => {
         <IconButton
           onClick={() => {
             setToggle(!toggle);
+            dispatch(displaySearchBar());
           }}
         >
           <ReceiptIcon

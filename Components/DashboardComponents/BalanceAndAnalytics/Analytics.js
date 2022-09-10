@@ -27,7 +27,7 @@ const Analytics = () => {
   };
   return (
     <>
-      <div className="max-w-[95%] xxsm:min-w-[100%] lmd:max-w-[100%] h-[100%] px-5 py-3  bg-violet text-white  rounded-lg   lmd:py-2 lmd:px-1 mx-auto">
+      <div className="max-w-[95%] xxsm:min-w-[100%] lmd:max-w-[100%] h-[100%] px-5 py-3  bg-silver text-white  rounded-lg   lmd:py-2 lmd:px-1 mx-auto">
         <Doughnut
           data={state}
           options={{
