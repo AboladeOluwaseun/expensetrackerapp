@@ -64,7 +64,9 @@ const TransactionsDisplay = ({
     const gettransactions = () => {
       let transactionData = [];
       onSnapshot(doc(db, "users", currentUser.uid), (doc) => {
-        transactionData = doc.data().transactions;
+        transactionData = doc
+          .data()
+          .transactions.sort((a, b) => b.createdAt - a.createdAt);
         dispatch(setTransaction(transactionData));
         const allExpenses = transactionData.filter(
           (transaction) => transaction.category === "Expense"

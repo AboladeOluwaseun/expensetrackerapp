@@ -65,14 +65,16 @@ const EntryForm = ({ windowWidth, setToggle, toggle, setNoIncome }) => {
           if (windowWidth > 924) {
             setToggle(false);
           }
-        }, 4000);
+        }, 3000);
       } else {
+        const d = new Date();
         setNoIncome(false);
         updateDoc(userDocRef, {
           transactions: arrayUnion({
             description,
             category,
             amount: +amount,
+            createdAt: d.getTime(),
           }),
         }).then(e.target.reset());
       }
