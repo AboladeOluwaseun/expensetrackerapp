@@ -25,7 +25,7 @@ const WelcomeDisplay = ({ windowWidth }) => {
           <p className="text-center mt-4">
             {windowWidth > 924
               ? "Fill the form below to add an Income"
-              : "Click the " + " button below to add an Income"}
+              : `Click the " + " button below to add an Income`}
           </p>
         )}
       </div>

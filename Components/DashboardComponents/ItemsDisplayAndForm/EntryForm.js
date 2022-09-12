@@ -48,10 +48,9 @@ const EntryForm = ({ windowWidth, setToggle, toggle, setNoIncome }) => {
         setNoIncome(true);
         setTimeout(() => {
           setNoIncome(false);
-          if (windowWidth > 924) {
-            setToggle(false);
-          }
+          setToggle(false);
         }, 3000);
+        e.target.reset();
       } else {
         const d = new Date();
         setNoIncome(false);
