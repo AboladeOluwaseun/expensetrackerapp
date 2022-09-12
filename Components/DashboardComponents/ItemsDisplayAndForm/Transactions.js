@@ -4,7 +4,6 @@ import WelcomeDisplay from "./WelcomeDisplay";
 import NoIncomeError from "./NoIncomeError";
 import { List, Paper } from "@mui/material";
 import Transaction from "./Transaction";
-import { useSelector } from "react-redux";
 
 const Transactions = ({
   filteredTransactions,
@@ -30,7 +29,7 @@ const Transactions = ({
   return (
     <>
       {dataDisplay.length <= 0 && !noIncome && !toggle ? (
-        <WelcomeDisplay />
+        <WelcomeDisplay windowWidth={windowWidth} />
       ) : windowWidth > 923 ? (
         <Paper
           style={{

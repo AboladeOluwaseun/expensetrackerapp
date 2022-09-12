@@ -32,31 +32,6 @@ export const transactionsSlice = createSlice({
         state.noIncome === true;
       } else state.noIncome = false;
     },
-    // addTransaction: (state, action) => {
-    //   if (state.incomeTotal <= 0 && action.payload.category === "Expense") {
-    //   } else state.transactions = state.transactions.concat(action.payload);
-    // },
-    // getTotalBalance: (state, action) => {
-    //   if (state.incomeTotal <= 0 && action.payload.category === "Expense") {
-    //     state.balance = 0;
-    //   } else state.balance = state.incomeTotal - state.expenseTotal;
-    // },
-    // getIncomeTotal: (state, action) => {
-    //   if (action.payload.category === "Income") {
-    //     state.incomeTotal = state.incomeTotal + +action.payload.amount;
-    //     state.noIncome = false;
-    //   }
-    // },
-    // getExpenseTotal: (state, action) => {
-    //   if (action.payload.category === "Expense") {
-    //     if (state.incomeTotal <= 0) {
-    //       state.expenseTotal = 0;
-    //       state.noIncome = true;
-    //     } else {
-    //       state.expenseTotal = state.expenseTotal + +action.payload.amount;
-    //     }
-    //   }
-    // },
     transactionTypeDisplay: (state, action) => {
       if (action.payload === "All") {
         state.filtredTransactionsState = state.transactions;

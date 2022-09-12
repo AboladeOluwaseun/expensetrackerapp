@@ -10,7 +10,6 @@ import {
   collection,
   query,
   orderBy,
-  getDocs,
   doc,
 } from "firebase/firestore";
 import {
@@ -41,14 +40,12 @@ const TransactionsDisplay = ({
   const searchedTransactions = useSelector(
     (state) => state.transactionslice.searchedTransactions
   );
-  const incomeTotal = useSelector(
-    (state) => state.transactionslice.incomeTotal
-  );
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
   };
   useEffect(() => {
+    setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);

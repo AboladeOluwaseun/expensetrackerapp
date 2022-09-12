@@ -3,7 +3,6 @@ import TransactionDisplayType from "./TransactionDisplayType";
 import TransactionsDisplay from "./TransactionsDisplay";
 import ToggleDisplayButton from "./ToggleDisplayButton";
 import EntryForm from "./EntryForm";
-import { useSelector } from "react-redux";
 
 const ItemsDisplayAndForm = () => {
   const [toggle, setToggle] = useState(false);
@@ -16,6 +15,7 @@ const ItemsDisplayAndForm = () => {
   };
 
   useEffect(() => {
+    setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);

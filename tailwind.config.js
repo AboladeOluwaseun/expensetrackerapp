@@ -19,7 +19,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "hero-pattern":
-          "url('C:/Users/SEUN/Downloads/blob-scatter-haikei.png')",
+          "url('https://cdn.vectorstock.com/i/1000x1000/29/36/polka-dot-background-seamless-pattern-purple-dot-vector-4082936.webp')",
       },
       gridTemplateRows: {
         layout: "48% 48%",

@@ -5,24 +5,10 @@ import { RadioGroup, Radio } from "@mui/material";
 import { FormControlLabel, FormControl, FormLabel } from "@mui/material";
 import { Box } from "@mui/material";
 import { createTheme } from "@mui/system";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { db } from "../../../config/fire";
 import { useAuth } from "../../../context/AuthContext";
-import {
-  addDoc,
-  collection,
-  serverTimestamp,
-  doc,
-  updateDoc,
-  arrayUnion,
-  arrayRemove,
-} from "firebase/firestore";
-import {
-  addTransaction,
-  getTotalBalance,
-  getIncomeTotal,
-  getExpenseTotal,
-} from "../../../ReduxStore/transactionSlice";
+import { collection, doc, updateDoc, arrayUnion } from "firebase/firestore";
 
 const theme = createTheme({
   palette: {
@@ -39,7 +25,6 @@ const EntryForm = ({ windowWidth, setToggle, toggle, setNoIncome }) => {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("Income");
-  const colRef = collection(db, "users");
   const { currentUser } = useAuth();
   const incomeTotal = useSelector(
     (state) => state.transactionslice.incomeTotal
@@ -48,6 +33,7 @@ const EntryForm = ({ windowWidth, setToggle, toggle, setNoIncome }) => {
     (state) => state.transactionslice.expenseTotal
   );
   const totalBalance = useSelector((state) => state.transactionslice.balance);
+
   const formHandler = (e) => {
     e.preventDefault();
     if (description && amount) {

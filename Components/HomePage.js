@@ -9,11 +9,11 @@ const HomePage = () => {
         <div className="text-black max-w-[80%]  min-h-[70%] relative top-[20%] my-auto mx-auto text-center">
           <h1 className="text-[3rem] font-semibold ">
             The Best way <br /> to Manage Your <br />{" "}
-            <span className="text-violet"> Money</span>
+            <span className="text-violet"> Expenses</span>
           </h1>
           <h2 className="font-bold mt-8 text-[1.4rem]">
-            UR
-            <span className="text-violet">MONEY</span>
+            MY
+            <span className="text-violet">MONI APP</span>
           </h2>
           <Link href="/Auth/Register">
             <button className="mt-16 bg-violet animate-pulse text-white px-8 active:scale-75 py-4 w-100% text-[1.7rem] rounded-full ">

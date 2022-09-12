@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-const WelcomeDisplay = () => {
+const WelcomeDisplay = ({ windowWidth }) => {
   const transactions = useSelector(
     (state) => state.transactionslice.transactions
   );
@@ -17,11 +17,17 @@ const WelcomeDisplay = () => {
             ? "Ooops"
             : "Welcome"}
         </h4>
-        <p className="text-center mt-4">
-          {searchedTransactions.length <= 0 && transactions.length >= 1
-            ? "the transaction you searched for is not available"
-            : "Click the " + " button below to add an Income"}
-        </p>
+        {searchedTransactions.length <= 0 && transactions.length >= 1 ? (
+          <p className="text-center mt-4">
+            the transaction you searched for is not available{" "}
+          </p>
+        ) : (
+          <p className="text-center mt-4">
+            {windowWidth > 924
+              ? "Fill the form below to add an Income"
+              : "Click the " + " button below to add an Income"}
+          </p>
+        )}
       </div>
     </>
   );

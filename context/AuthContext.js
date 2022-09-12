@@ -71,7 +71,6 @@ export const AuthProvider = ({ children }) => {
           router.push("/Dashboard/DashboardPage");
         }
       })
-      .then(setIsLoading(false))
       .catch((err) => {
         if (err.code === "auth/wrong-password") {
           setErrMsg("invalid/wrong password");
