@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import EntryForm from "./EntryForm";
 import WelcomeDisplay from "./WelcomeDisplay";
 import NoIncomeError from "./NoIncomeError";
 import { List, Paper } from "@mui/material";
 import Transaction from "./Transaction";
+import { useSelector } from "react-redux";
 
 const Transactions = ({
   filteredTransactions,
   windowWidth,
-  noIncomeState,
   toggle,
   setToggle,
+  noIncome,
+  setNoIncome,
 }) => {
   const dataDisplay = filteredTransactions.map((transaction, index) => {
     return (
@@ -24,11 +26,12 @@ const Transactions = ({
       </li>
     );
   });
+
   return (
     <>
-      {dataDisplay.length <= 0 && !noIncomeState && !toggle ? (
+      {dataDisplay.length <= 0 && !noIncome && !toggle ? (
         <WelcomeDisplay />
-      ) : windowWidth > 924 ? (
+      ) : windowWidth > 923 ? (
         <Paper
           style={{
             borderRadius: "8px",
@@ -43,7 +46,7 @@ const Transactions = ({
             },
           }}
         >
-          {noIncomeState ? <NoIncomeError /> : <List>{dataDisplay}</List>}
+          {noIncome ? <NoIncomeError /> : <List>{dataDisplay}</List>}
         </Paper>
       ) : !toggle ? (
         <Paper
@@ -59,13 +62,15 @@ const Transactions = ({
             },
           }}
         >
-          {noIncomeState ? <NoIncomeError /> : <List>{dataDisplay}</List>}
+          {noIncome ? <NoIncomeError /> : <List>{dataDisplay}</List>}
         </Paper>
       ) : (
         <EntryForm
           windowWidth={windowWidth}
           toggle={toggle}
           setToggle={setToggle}
+          noIncome={noIncome}
+          setNoIncome={setNoIncome}
         ></EntryForm>
       )}
     </>

@@ -5,7 +5,7 @@ import { RadioGroup, Radio } from "@mui/material";
 import { FormControlLabel, FormControl, FormLabel } from "@mui/material";
 import { Box } from "@mui/material";
 import { createTheme } from "@mui/system";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { db } from "../../../config/fire";
 import { useAuth } from "../../../context/AuthContext";
 import {
@@ -35,33 +35,48 @@ const theme = createTheme({
   },
 });
 
-const EntryForm = ({ windowWidth, setToggle, toggle }) => {
+const EntryForm = ({ windowWidth, setToggle, toggle, setNoIncome }) => {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("Income");
-  const dispatch = useDispatch();
   const colRef = collection(db, "users");
   const { currentUser } = useAuth();
-
+  const incomeTotal = useSelector(
+    (state) => state.transactionslice.incomeTotal
+  );
+  const expenseTotal = useSelector(
+    (state) => state.transactionslice.expenseTotal
+  );
+  const totalBalance = useSelector((state) => state.transactionslice.balance);
   const formHandler = (e) => {
     e.preventDefault();
     if (description && amount) {
-      const payload = { description, amount, category };
-      // dispatch(addTransaction(payload));
       const userDocRef = doc(db, "users", currentUser.uid);
-      updateDoc(userDocRef, {
-        transactions: arrayUnion({
-          description,
-          category,
-          amount: +amount,
-        }),
-      }).then(e.target.reset());
+      if (
+        (incomeTotal <= 0 && category === "Expense") ||
+        (totalBalance <= 0 &&
+          incomeTotal > 0 &&
+          expenseTotal > 0 &&
+          category === "Expense")
+      ) {
+        setNoIncome(true);
+        setTimeout(() => {
+          setNoIncome(false);
+          if (windowWidth > 924) {
+            setToggle(false);
+          }
+        }, 4000);
+      } else {
+        setNoIncome(false);
+        updateDoc(userDocRef, {
+          transactions: arrayUnion({
+            description,
+            category,
+            amount: +amount,
+          }),
+        }).then(e.target.reset());
+      }
       setToggle(!toggle);
-      // dispatch(getIncomeTotal(payload));
-      // dispatch(getExpenseTotal(payload));
-      // dispatch(getTotalBalance(payload));
-      setDescription("");
-      setAmount("");
     } else console.log("enter a valid description or amount");
   };
 

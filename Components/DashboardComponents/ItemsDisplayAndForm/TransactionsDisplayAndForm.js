@@ -3,11 +3,12 @@ import TransactionDisplayType from "./TransactionDisplayType";
 import TransactionsDisplay from "./TransactionsDisplay";
 import ToggleDisplayButton from "./ToggleDisplayButton";
 import EntryForm from "./EntryForm";
+import { useSelector } from "react-redux";
 
 const ItemsDisplayAndForm = () => {
   const [toggle, setToggle] = useState(false);
   const [windowWidth, setWindowWidth] = useState("");
-
+  const [noIncome, setNoIncome] = useState(false);
   const [filteredTransactions, setFilteredTransactions] = useState([]);
 
   const handleResize = () => {
@@ -34,12 +35,19 @@ const ItemsDisplayAndForm = () => {
           setToggle={setToggle}
           filteredTransactions={filteredTransactions}
           setFilteredTransactions={setFilteredTransactions}
+          noIncome={noIncome}
+          setNoIncome={setNoIncome}
         />
-        {windowWidth > 924 && (
-          <EntryForm setToggle={setToggle} toggle={toggle} />
+        {windowWidth > 923 && (
+          <EntryForm
+            setToggle={setToggle}
+            toggle={toggle}
+            noIncome={noIncome}
+            setNoIncome={setNoIncome}
+          />
         )}
       </div>
-      {windowWidth < 924 && (
+      {windowWidth < 923 && (
         <ToggleDisplayButton setToggle={setToggle} toggle={toggle} />
       )}
     </>

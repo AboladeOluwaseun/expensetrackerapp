@@ -67,7 +67,9 @@ export const AuthProvider = ({ children }) => {
     setLoggingIn(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((cred) => {
-        router.push("/Dashboard/DashboardPage");
+        if (cred.user) {
+          router.push("/Dashboard/DashboardPage");
+        }
       })
       .then(setIsLoading(false))
       .catch((err) => {
@@ -89,7 +91,6 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
-      console.log(currentUser);
     });
     return unsubscribe;
   }, []);

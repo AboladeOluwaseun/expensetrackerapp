@@ -11,7 +11,7 @@ const BalanceDisplay = () => {
   );
   return (
     <>
-      <div className="bg-violet rounded-lg text-white ">
+      <div className=" bg-violet rounded-lg text-white ">
         <div className="max-w-[95%]  py-3 mx-auto">
           <div className="lmd:text-[1.5rem] font-bold">
             <p>Total Balance</p>

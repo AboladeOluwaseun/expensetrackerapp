@@ -17,6 +17,10 @@ module.exports = {
       xxl: "1536px",
     },
     extend: {
+      backgroundImage: {
+        "hero-pattern":
+          "url('C:/Users/SEUN/Downloads/blob-scatter-haikei.png')",
+      },
       gridTemplateRows: {
         layout: "48% 48%",
         mainlayoutsmall: "30% 70%",

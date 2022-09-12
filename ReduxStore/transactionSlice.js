@@ -27,6 +27,11 @@ export const transactionsSlice = createSlice({
     setExpenseTotal: (state, action) => {
       state.expenseTotal = action.payload;
     },
+    setNoIncome: (state, action) => {
+      if (action.payload === "Expense") {
+        state.noIncome === true;
+      } else state.noIncome = false;
+    },
     // addTransaction: (state, action) => {
     //   if (state.incomeTotal <= 0 && action.payload.category === "Expense") {
     //   } else state.transactions = state.transactions.concat(action.payload);
@@ -67,7 +72,11 @@ export const transactionsSlice = createSlice({
       if (action.payload) {
         state.searchedTransactions = state.transactions.filter(
           (transaction) => {
-            return transaction.description.indexOf(action.payload) > -1;
+            return (
+              transaction.description
+                .toLowerCase()
+                .indexOf(action.payload.toLowerCase()) > -1
+            );
           }
         );
       } else if (action.payload === "") {
@@ -93,6 +102,7 @@ export const {
   transactionTypeDisplay,
   searchTransaction,
   displaySearchBar,
+  setNoIncome,
 } = transactionsSlice.actions;
 
 export default transactionsSlice.reducer;

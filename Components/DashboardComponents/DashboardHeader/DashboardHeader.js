@@ -11,6 +11,7 @@ import { db } from "../../../config/fire";
 import { doc, onSnapshot } from "firebase/firestore";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { IconButton } from "@mui/material";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 const DashboardHeader = () => {
   const [show, setShow] = useState(false);
   const { currentUser } = useAuth();
@@ -25,7 +26,6 @@ const DashboardHeader = () => {
     <>
       {show && <AccountDetails show={show} setShow={setShow} />}
       <div className="pt-4 flex items-center justify-between">
-        {/* <h2 className="hidden lmd:block text-[2rem] font-bold">Logo</h2> */}
         <div>
           <h1 className="text-[2.5rem] font-bold">
             Hello <span className="text-violet">{username}</span>,
@@ -36,21 +36,21 @@ const DashboardHeader = () => {
         <div className="hidden lmd:block">
           <SearchBar />
         </div>
-
-        <IconButton
-          onClick={() => {
-            setShow(!show);
-          }}
-        >
-          <AccountCircle
-            sx={{
-              width: 50,
-              height: 50,
-              // border: "1px solid black",
-              // borderRadius: 50,
+        <div className="flex items-center space-x-5">
+          <DarkModeIcon sx={{ cursor: "pointer", width: 30, height: 30 }} />
+          <IconButton
+            onClick={() => {
+              setShow(!show);
             }}
-          />
-        </IconButton>
+          >
+            <AccountCircle
+              sx={{
+                width: 50,
+                height: 50,
+              }}
+            />
+          </IconButton>
+        </div>
       </div>
     </>
   );

@@ -5,11 +5,7 @@ import Dashboard from "../../Components/DashboardComponents/Dashboard";
 const DashboardPage = () => {
   const { currentUser } = useAuth();
 
-  return (
-    <>
-      <Dashboard></Dashboard>
-    </>
-  );
+  return <>{currentUser && <Dashboard></Dashboard>}</>;
 };
 
 export default DashboardPage;

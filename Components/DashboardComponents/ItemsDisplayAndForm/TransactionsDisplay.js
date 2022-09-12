@@ -25,6 +25,8 @@ const TransactionsDisplay = ({
   setToggle,
   filteredTransactions,
   setFilteredTransactions,
+  noIncome,
+  setNoIncome,
 }) => {
   const [windowWidth, setWindowWidth] = useState("");
   const noIncomeState = useSelector((state) => state.transactionslice.noIncome);
@@ -38,6 +40,9 @@ const TransactionsDisplay = ({
   );
   const searchedTransactions = useSelector(
     (state) => state.transactionslice.searchedTransactions
+  );
+  const incomeTotal = useSelector(
+    (state) => state.transactionslice.incomeTotal
   );
 
   const handleResize = () => {
@@ -97,6 +102,8 @@ const TransactionsDisplay = ({
         noIncomeState={noIncomeState}
         toggle={toggle}
         setToggle={setToggle}
+        noIncome={noIncome}
+        setNoIncome={setNoIncome}
       />
     </>
   );
