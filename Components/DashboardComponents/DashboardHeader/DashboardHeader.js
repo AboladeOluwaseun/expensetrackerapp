@@ -37,7 +37,6 @@ const DashboardHeader = () => {
           <SearchBar />
         </div>
         <div className="flex items-center space-x-5">
-          <DarkModeIcon sx={{ cursor: "pointer", width: 30, height: 30 }} />
           <IconButton
             onClick={() => {
               setShow(!show);

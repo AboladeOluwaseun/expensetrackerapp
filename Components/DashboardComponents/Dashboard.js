@@ -1,6 +1,4 @@
 import React from "react";
-import { useAuth } from "../../context/AuthContext";
-import Router from "next/router";
 import DashboardHeader from "./DashboardHeader/DashboardHeader";
 import DashboardDetails from "./DashboardDetails";
 import MenuBar from "./MenuBar";
