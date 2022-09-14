@@ -5,13 +5,13 @@ const SignedUpCheck = ({ isSignedUp, setIsSignedUp }) => {
     <>
       <p className="mt-4">
         {isSignedUp
-          ? `Don't have an account? Signup`
-          : "Already have an account? Login"}
+          ? `Don't have an account? Signup `
+          : "Already have an account? Login "}
         <span
           onClick={() => {
             setIsSignedUp(!isSignedUp);
           }}
-          className="text-violet underline"
+          className="text-violet cursor-pointer underline"
         >
           here
         </span>

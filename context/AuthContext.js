@@ -41,7 +41,6 @@ export const AuthProvider = ({ children }) => {
         router.push("/Dashboard/DashboardPage");
         setIsLoading(false);
       })
-      .then(e.target.reset())
       .catch((err) => {
         if (err.code === "auth/weak-password") {
           setErrMsg("password must be at least 6 characters long");
@@ -72,7 +71,6 @@ export const AuthProvider = ({ children }) => {
           router.push("/Dashboard/DashboardPage");
         }
       })
-      .then(e.target.reset())
       .catch((err) => {
         if (err.code === "auth/wrong-password") {
           setErrMsg("invalid/wrong password");

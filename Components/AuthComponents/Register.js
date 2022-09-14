@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import Button from "./Button";
-import Router from "next/router";
 import InputField from "./InputField";
 import SignedUpCheck from "./SignedUpCheck";
 import AuthPageMessage from "./AuthPageMessage";
