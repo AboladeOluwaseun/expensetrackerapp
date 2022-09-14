@@ -89,8 +89,8 @@ const TransactionsDisplay = ({
         console.log(totalIncome);
         console.log(totalExpense);
         dispatch(setTotalBalance(totalBalance));
-        dispatch(setIncomeTotal(totalIncome));
-        dispatch(setExpenseTotal(totalExpense));
+        dispatch(setIncomeTotal(totalIncomeCalculation));
+        dispatch(setExpenseTotal(totalExpenseCalculation));
       });
     };
     gettransactions();
