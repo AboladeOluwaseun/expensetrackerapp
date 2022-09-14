@@ -80,7 +80,7 @@ const EntryForm = ({ windowWidth, setToggle, toggle, setNoIncome }) => {
                 setDescription(e.target.value);
               }}
               type="text"
-              pattern="[a-zA-Z]+"
+              pattern="^[A-Za-z \s*]+"
               title="this field only accepts alphabets"
               name="description"
               id="description"

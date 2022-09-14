@@ -20,7 +20,7 @@ const Register = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    e.target.reset();
+
     if (!isSignedUp && (!email || !password || !userName)) {
       setError("Please enter a valid username, email, or password");
       setTimeout(() => {
@@ -30,10 +30,10 @@ const Register = () => {
     }
 
     if (isSignedUp) {
-      logIn(email, password);
+      logIn(email, password, e);
     }
     if (!isSignedUp) {
-      signUp(email, password, userName);
+      signUp(email, password, userName, e);
     }
   };
   return (

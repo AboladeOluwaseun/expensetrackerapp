@@ -1,31 +1,15 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { transactionTypeDisplay } from "../../../ReduxStore/transactionSlice";
 import { useSelector } from "react-redux";
+import Button from "../../UI/Button";
 
 const TransactionDisplayType = ({ setFilteredTransactions }) => {
-  const itemTypes = ["All", "Income", "Expense"];
-  const dispatch = useDispatch();
+  const itemTypes = [{ name: "All" }, { name: "Income" }, { name: "Expense" }];
   const filtredTransactionsState = useSelector(
     (state) => state.transactionslice.filtredTransactionsState
   );
 
-  const transactionsFilterHandler = (type) => {
-    dispatch(transactionTypeDisplay(type));
-  };
-
   const itemTypeButtons = itemTypes.map((button, index) => {
-    return (
-      <li
-        onClick={() => {
-          transactionsFilterHandler(button);
-        }}
-        key={index}
-        className=" w-[100%] cursor-pointer py-2 text-center bg-slate-900 text-white active:text-black active:bg-white rounded-full"
-      >
-        {button}
-      </li>
-    );
+    return <Button name={button.name} key={index} />;
   });
 
   useEffect(() => {

@@ -65,19 +65,29 @@ const TransactionsDisplay = ({
           .data()
           .transactions.sort((a, b) => b.createdAt - a.createdAt);
         dispatch(setTransaction(transactionData));
+        const number = (number) => {
+          return (Math.round(number * 100) / 100).toLocaleString();
+        };
         const allExpenses = transactionData.filter(
           (transaction) => transaction.category === "Expense"
         );
         const allIncomes = transactionData.filter(
           (transaction) => transaction.category === "Income"
         );
-        const totalExpense = allExpenses.reduce((total, expense) => {
+        const totalExpenseCalculation = allExpenses.reduce((total, expense) => {
           return total + expense.amount;
         }, 0);
-        const totalIncome = allIncomes.reduce((total, income) => {
+        const totalIncomeCalculation = allIncomes.reduce((total, income) => {
           return total + income.amount;
         }, 0);
-        const totalBalance = totalIncome - totalExpense;
+
+        const totalBalance = number(
+          totalIncomeCalculation - totalExpenseCalculation
+        );
+        const totalIncome = number(+totalIncomeCalculation);
+        const totalExpense = number(+totalExpenseCalculation);
+        console.log(totalIncome);
+        console.log(totalExpense);
         dispatch(setTotalBalance(totalBalance));
         dispatch(setIncomeTotal(totalIncome));
         dispatch(setExpenseTotal(totalExpense));

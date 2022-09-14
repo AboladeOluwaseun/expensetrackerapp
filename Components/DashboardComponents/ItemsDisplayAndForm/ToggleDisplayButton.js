@@ -32,7 +32,7 @@ const ToggleDisplayButton = ({ setToggle, toggle }) => {
   return (
     <>
       {openSearchBar && !toggle ? (
-        <div className="fixed bottom-16">
+        <div className="fixed bottom-18">
           <SearchBar />
         </div>
       ) : (

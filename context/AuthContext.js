@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
   const router = useRouter();
 
   // SignUp
-  const signUp = (email, password, username) => {
+  const signUp = (email, password, username, e) => {
     setIsLoading(true);
     setLoggingIn(false);
     createUserWithEmailAndPassword(auth, email, password)
@@ -41,6 +41,7 @@ export const AuthProvider = ({ children }) => {
         router.push("/Dashboard/DashboardPage");
         setIsLoading(false);
       })
+      .then(e.target.reset())
       .catch((err) => {
         if (err.code === "auth/weak-password") {
           setErrMsg("password must be at least 6 characters long");
@@ -62,7 +63,7 @@ export const AuthProvider = ({ children }) => {
     });
   };
   // ####SignIn######
-  const logIn = (email, password) => {
+  const logIn = (email, password, e) => {
     setIsLoading(true);
     setLoggingIn(true);
     signInWithEmailAndPassword(auth, email, password)
@@ -71,6 +72,7 @@ export const AuthProvider = ({ children }) => {
           router.push("/Dashboard/DashboardPage");
         }
       })
+      .then(e.target.reset())
       .catch((err) => {
         if (err.code === "auth/wrong-password") {
           setErrMsg("invalid/wrong password");
