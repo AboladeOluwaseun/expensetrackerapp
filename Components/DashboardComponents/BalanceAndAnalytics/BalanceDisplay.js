@@ -9,6 +9,9 @@ const BalanceDisplay = () => {
   const expenseTotal = useSelector(
     (state) => state.transactionslice.expenseTotal
   );
+  const number = (number) => {
+    return (Math.round(number * 100) / 100).toLocaleString();
+  };
   return (
     <>
       <div className=" bg-violet rounded-lg text-white ">
@@ -20,11 +23,11 @@ const BalanceDisplay = () => {
           <div className="flex font-bold mt-9 text-[0.8rem] lmd:mt-16 lmd:text-[1.5rem] items-center justify-between">
             <div>
               <p>Income</p>
-              <h2>&#8358;{incomeTotal}</h2>
+              <h2>&#8358;{number(incomeTotal)}</h2>
             </div>
             <div>
               <p>Expense</p>
-              <h2>&#8358;{expenseTotal}</h2>
+              <h2>&#8358;{number(expenseTotal)}</h2>
             </div>
           </div>
         </div>
